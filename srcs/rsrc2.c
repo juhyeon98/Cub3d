@@ -6,7 +6,7 @@
 /*   By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 17:04:10 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/03/28 17:15:47 by juhyelee         ###   ########.fr       */
+/*   Updated: 2024/04/02 11:48:46 by juhyelee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ t_color	convert_color(char const *str)
 	return (color);
 }
 
-void	clear_resrouce(t_rsrc *const rsrc)
+void	clear_resource(t_rsrc *const rsrc)
 {
 	free(rsrc->textures[0]);
 	free(rsrc->textures[1]);

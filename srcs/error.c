@@ -6,7 +6,7 @@
 /*   By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 11:17:13 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/03/28 17:17:09 by juhyelee         ###   ########.fr       */
+/*   Updated: 2024/04/02 11:49:13 by juhyelee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	print_error(enum e_error num)
 {
+	ft_putendl_fd("Error", STDERR_FILENO);
 	if (num == E_ALLOC)
 		ft_putendl_fd(strerror(ENOMEM), STDERR_FILENO);
 	else if (num == E_ARG_LACK)
@@ -24,12 +25,12 @@ void	print_error(enum e_error num)
 		ft_putendl_fd("Is not .cub file", STDERR_FILENO);
 	else if (num == E_FILE_FDERR)
 		ft_putendl_fd("File descriptor is negative", STDERR_FILENO);
-	resrouce_error(num);
+	resource_error(num);
 	map_error(num);
 	exit(EXIT_FAILURE);
 }
 
-void	resrouce_error(enum e_error num)
+void	resource_error(enum e_error num)
 {
 	if (num == E_RSRC_LACK)
 		ft_putendl_fd("Need more map information", STDERR_FILENO);
