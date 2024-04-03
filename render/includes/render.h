@@ -6,7 +6,7 @@
 /*   By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 14:37:46 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/04/03 19:04:25 by juhyelee         ###   ########.fr       */
+/*   Updated: 2024/04/03 19:47:49 by juhyelee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # define NO 0xFF0000
 # define SO 0x00FF00
 # define WE 0x0000FF
-# define EA 0xF0F0F0
+# define EA 0xFFFFFF
 
 # define FL 0x14471E
 # define CL 0x68904D
