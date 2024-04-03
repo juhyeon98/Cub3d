@@ -6,7 +6,7 @@
 /*   By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 10:43:32 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/03/28 17:12:58 by juhyelee         ###   ########.fr       */
+/*   Updated: 2024/04/02 11:49:18 by juhyelee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ typedef struct s_map
 }t_map;
 
 void	print_error(enum e_error num);
-void	resrouce_error(enum e_error num);
+void	resource_error(enum e_error num);
 void	map_error(enum e_error num);
 
 char	*get_line(int const fd);
@@ -90,7 +90,7 @@ int		is_white(char const ch);
 char	*set_texture(char const *str);
 void	set_color(t_color *const color, char const *str);
 t_color	convert_color(char const *const str);
-void	clear_resrouce(t_rsrc *const rsrc);
+void	clear_resource(t_rsrc *const rsrc);
 
 void	init_map(t_map *const map, int const fd);
 size_t	get_start_point(char const *str);
