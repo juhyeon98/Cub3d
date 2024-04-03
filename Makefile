@@ -6,7 +6,7 @@
 #    By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/28 11:02:51 by juhyelee          #+#    #+#              #
-#    Updated: 2024/03/28 17:11:23 by juhyelee         ###   ########.fr        #
+#    Updated: 2024/04/03 12:07:21 by juhyelee         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ CC = cc
 CFLAG = -Wall -Wextra -Werror -I${INCS} -g3
 LFLAG = -Llibft -lft
 
-NAME = cub3d
+NAME = cub3D
 
 .PHONY : all clean fclean re
 
