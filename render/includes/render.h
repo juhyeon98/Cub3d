@@ -6,7 +6,7 @@
 /*   By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 14:37:46 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/04/03 15:11:47 by juhyelee         ###   ########.fr       */
+/*   Updated: 2024/04/03 19:04:25 by juhyelee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,14 @@
 
 # include "../mlx/mlx.h"
 
-# define HEIGHT 1080
-# define WIDTH 1920
+# define HEIGHT 600
+# define WIDTH 800
 
-# define NO 0xC8D2D1
-# define SO 0xEE9B01
-# define WE 0xDA6A00
-# define EA 0xE22D02
+# define NO 0xFF0000
+# define SO 0x00FF00
+# define WE 0x0000FF
+# define EA 0xF0F0F0
+
 # define FL 0x14471E
 # define CL 0x68904D
 

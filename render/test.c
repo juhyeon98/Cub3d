@@ -6,12 +6,13 @@
 /*   By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 12:12:19 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/04/03 17:37:06 by juhyelee         ###   ########.fr       */
+/*   Updated: 2024/04/03 19:00:07 by juhyelee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/render.h"
 #include <math.h>
+#include <stdio.h>
 
 char	*g_map[] = {
 	"        1111111111111111111111111",
@@ -24,40 +25,47 @@ char	*g_map[] = {
 	"11110111111111011101010010001    ",
 	"11000000110101011100000010001    ",
 	"10000000000000001101010010001    ",
-	"11000001110101011111011110N0111  ",
+	"1100000111010101111101111000111  ",
 	"11110111 1110101 101111010001    ",
 	"11111111 1111111 111111111111    "
 };
 
-int	main(void)
+void	init_window(void *mlx, void *win, void *img)
 {
-	// player
-	//double posx = 26, posy = 10;
-	//double dirx = 0, diry = -1;
-	//double planx = 0.66, plany = 0;
-
-	// 창 초기화
-	void	*mlx = mlx_init();
-	void	*win = mlx_new_window(mlx, WIDTH, HEIGHT, "test");
-	void	*img = mlx_new_image(mlx, WIDTH, HEIGHT);
-	int		bpp, len, end;
+	int	bpp, len, end;
 	int	*add = (int *)mlx_get_data_addr(img, &bpp, &len, &end);
 
-	//int	h, w;
-	//void	*test = mlx_png_file_to_image(mlx, "eagle.png", &w, &h);
-
+	mlx_clear_window(mlx, win);
 	for (int y = 0; y < HEIGHT / 2; y++)
 		for (int x = 0; x < WIDTH; x++)
 			add[y * WIDTH + x] = CL;
 	for (int y = HEIGHT / 2; y < HEIGHT; y++)
 		for (int x = 0; x < WIDTH; x++)
 			add[y * WIDTH + x] = FL;
-/*
+}
+
+int	main(void)
+{
+	// player
+	double posx = 14, posy = 9;
+	double dirx = 0, diry = -1;
+	double planx = 0.66, plany = 0;
+
+	// 창 초기화
+	void	*mlx = mlx_init();
+	void	*win = mlx_new_window(mlx, WIDTH, HEIGHT, "test");
+	void	*img = mlx_new_image(mlx, WIDTH, HEIGHT);
+
+	//int	h, w;
+	//void	*test = mlx_png_file_to_image(mlx, "eagle.png", &w, &h);
+
 	// 충돌 감지
-	for (int x = 0; x < WIDTH; x++)
+	int x;
+	for (x = 0; x < WIDTH; x++)
 	{
+		//init_window(mlx, win, img);
 		// ray 벡터 구하기
-		double camera_rate = 2 * (x / WIDTH) - 1;
+		double camera_rate = 2 * ((double)x / WIDTH) - 1;
 		double rayx = dirx + planx * camera_rate;
 		double rayy = diry + plany * camera_rate;
 
@@ -100,12 +108,11 @@ int	main(void)
 		}
 
 		// dda
-		int	hit = 0;
 		int	hit_side;
-		while (hit == 0)
+		while (1)
 		{
 			if (g_map[i_posy][i_posx] == '1')
-				hit = 1;
+				break ;
 			if (nearx < neary)
 			{
 				nearx += farx;
@@ -123,26 +130,40 @@ int	main(void)
 		// 거리 구하기
 		double dis;
 		if (hit_side == 0)
-			dis = (fabs(i_posx - posx + (1 - stepx) / 2)) / rayx;
+			dis = (i_posx - posx + (1 - stepx) / 2) / rayx;
 		else
-			dis = (fabs(i_posy - posy + (1 - stepy) / 2)) / rayy;
-
+			dis = (i_posy - posy + (1 - stepy) / 2) / rayy;
 		// 거리 비율 구하기
-		int	hrate = (int)(HEIGHT / dis);
+		int	hrate = (int)((double)HEIGHT / dis);
 		int	start = -hrate / 2 + HEIGHT / 2;
 		if (start < 0)
 			start = 0;
 		int	end = hrate / 2 + HEIGHT / 2;
 		if (end >= HEIGHT)
 			end = HEIGHT - 1;
+		//printf("[%d] hrate : %d | %d ~ %d\n", x, hrate, start, end);
+
+		// 컬러 판단
+		int	color = 0;
+		if (hit_side == 0 && rayx < 0)
+			color = EA;
+		else if (hit_side == 0 && rayx >= 0)
+			color = WE;
+		else if (hit_side == 1 && rayy < 0)
+			color = SO;
+		else if (hit_side == 1 && rayy >= 0)
+			color = NO;
 
 		// 그리기
 		for (int i = start; i <= end; i++)
-			add[WIDTH * i + x] = NO;
-		mlx_put_image_to_window(mlx, win, img, 0, 0);
+		{
+			int	bpp, len, endian;
+			unsigned int	*add = (unsigned int *)mlx_get_data_addr(img, &bpp, &len, &endian);
+			add[i * WIDTH + x] = color;
+		}
 	}
-*/
 	mlx_put_image_to_window(mlx, win, img, 0, 0);
+	//printf("\n%d\n", x);
 	mlx_loop(mlx);
 	return (0);
 }

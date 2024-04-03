@@ -1,5 +1,5 @@
 CC=cc
-CFLAG=-Wall -Wextra -Werror -c
+CFLAG=-Wall -Wextra -Werror -g3
 LFLAG=-Lmlx -lmlx -framework OpenGL -framework AppKit
 NAME=test
 SRCS=test.c
@@ -18,7 +18,7 @@ $(MLX):
 	make -C $(MLXDIR)
 
 %.o: %.c
-	$(CC) $(CFLAG) $< -o $@
+	$(CC) $(CFLAG) -c $< -o $@
 
 clean:
 	rm -rf $(OBJS)
