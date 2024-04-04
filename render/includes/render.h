@@ -28,13 +28,23 @@
 
 # define TXT_WIDTH 32
 # define ESC_KEY 53
+# define W 13
+# define A 0
+# define S 1
+# define D 2
+# define LEFT 123
+# define RIGHT 124
 # define KEY_EXIT 17
 # define KEY_PRESS 2
 # define FOV 67
 
+# define ANGLE 0.01
+# define SPEED 0.1
+# define COLLISION 0.5
+
 typedef struct s_img
 {
-    void    *obj;
+    void	*obj;
     char    *addr;
     int     bpp;
     int     len;
@@ -42,6 +52,20 @@ typedef struct s_img
     int     w;
     int     h;
 }t_img;
+
+typedef struct s_game
+{
+    void    *mlx;
+    void    *win;
+    t_img   screen;
+    t_img   textures[4];
+    double  posx;
+    double  posy;
+    double  dirx;
+    double  diry;
+    double  planx;
+    double  plany;
+}t_game;
 
 //typedef struct s_r_vec
 //{

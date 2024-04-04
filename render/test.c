@@ -13,15 +13,16 @@
 #include "includes/render.h"
 #include <math.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 char	*g_map[] = {
-	"1111111",
-	"1000001",
-	"100E001",
-	"1000001",
-	"1010101",
-	"1010101",
-	"1111111",
+	"11111111111",
+	"10000000001",
+	"10000000001",
+	"10000E00001",
+	"10000000001",
+	"10000000001",
+	"11111111111",
 };
 
 void	init_window(void *mlx, void *win, t_img *img)
@@ -56,33 +57,17 @@ void	init_rsrcs(void *mlx, t_img *rsrcs)
 	rsrcs[3].addr = mlx_get_data_addr(rsrcs[3].obj, &rsrcs[3].bpp, &rsrcs[3].len, &rsrcs[3].endian);
 }
 
-int	main(void)
+void	render(t_game *game)
 {
-	// player
-	double posx = 4, posy = 2;
-	double dirx = -1, diry = 0;
-	double planx = 0, plany = 0.66;
+	init_window(game->mlx, game->win, &game->screen);
 
-	// 창 초기화
-	void	*mlx = mlx_init();
-	void	*win = mlx_new_window(mlx, WIDTH, HEIGHT, "test");
-	t_img	img;
-
-	init_img(mlx, &img);
-	init_window(mlx, win, &img);
-
-	// 텍스처 로딩
-	t_img	rsrcs[4];
-	init_rsrcs(mlx, rsrcs);
-
-	// 렌더링
 	int x;
 	for (x = 0; x < WIDTH; x++)
 	{
 		// ray 벡터 구하기
 		double camera_rate = 2 * ((double)x / WIDTH) - 1;
-		double rayx = dirx + planx * camera_rate;
-		double rayy = diry + plany * camera_rate;
+		double rayx = game->dirx + game->planx * camera_rate;
+		double rayy = game->diry + game->plany * camera_rate;
 
 		// 측정용 벡터 구하기
 		double	farx, fary;
@@ -100,26 +85,26 @@ int	main(void)
 			farx = fabs(1 / rayx);
 		double	nearx, neary;
 		int	stepx, stepy;
-		int i_posx = (int)posx, i_posy = (int)posy;
+		int i_posx = (int)game->posx, i_posy = (int)game->posy;
 		if (rayx < 0)
 		{
 			stepx = -1; // 오른쪽 방향
-			nearx = (posx - i_posx) * farx;
+			nearx = (game->posx - i_posx) * farx;
 		}
 		else
 		{
 			stepx = 1; // 왼쪽 방향
-			nearx = (i_posx + 1.0 - posx) * farx;
+			nearx = (i_posx + 1.0 - game->posx) * farx;
 		}
 		if (rayy < 0)
 		{
 			stepy = -1; // 위쪽 방향
-			neary = (posy - i_posy) * fary;
+			neary = (game->posy - i_posy) * fary;
 		}
 		else
 		{
 			stepy = 1; // 아래쪽 방향
-			neary = (i_posy + 1.0 - posy) * fary;
+			neary = (i_posy + 1.0 - game->posy) * fary;
 		}
 
 		// dda
@@ -145,11 +130,12 @@ int	main(void)
 		// 거리 구하기
 		double dis;
 		if (hit_side == 0)
-			dis = (i_posx - posx + (1 - stepx) / 2) / rayx;
+			dis = (i_posx - game->posx + (1 - stepx) / 2) / rayx;
 		else
-			dis = (i_posy - posy + (1 - stepy) / 2) / rayy;
+			dis = (i_posy - game->posy + (1 - stepy) / 2) / rayy;
 		// 거리 비율 구하기
-		int	hrate = (int)(HEIGHT / dis);
+		int	hrate = abs((int)(HEIGHT / dis));
+		double h_over = (double)hrate / HEIGHT; //1이상인 경우 화면 넘는 것임
 		int	start = -hrate / 2 + HEIGHT / 2;
 		if (start < 0)
 			start = 0;
@@ -171,9 +157,9 @@ int	main(void)
 		// 그릴 위치 구하기
 		double	wallx;
 		if (hit_side == 0)
-			wallx = posy + dis * rayy;
+			wallx = game->posy + dis * rayy;
 		else
-			wallx = posx + dis * rayx;
+			wallx = game->posx + dis * rayx;
 		wallx -= floor(wallx);
 		
 		int textx = (int)(wallx * (double)(TXT_WIDTH));
@@ -183,18 +169,112 @@ int	main(void)
 			textx = TXT_WIDTH - textx - 1;
 
 		// 그리기
+		// 맨 아래 픽셀
+		int	i32;
 		for (int s_idx = start; s_idx < end; s_idx++)
 		{
-			int	i32 = TXT_WIDTH * (s_idx - start) / (end - start);
-			char	*screen = img.addr + (s_idx * img.len + x * (img.bpp / 8));
-			char	*text = rsrcs[index].addr + (i32 * rsrcs[index].len + textx * (rsrcs[index].bpp / 8));
+			if (h_over < 1) i32 = TXT_WIDTH * (s_idx - start) / (end - start); //height
+			else i32 = (int)((TXT_WIDTH - (double)TXT_WIDTH / h_over) / 2 + ((double)TXT_WIDTH / h_over) * (s_idx - start) / (double)(end - start));
+			char	*screen = game->screen.addr + (s_idx * game->screen.len + x * (game->screen.bpp / 8));
+			char	*text = game->textures[index].addr + (i32 * game->textures[index].len + textx * (game->textures[index].bpp / 8));
 			*(unsigned int *)(screen) = *(unsigned int *)(text);
 		}
 	}
-	mlx_put_image_to_window(mlx, win, img.obj, 0, 0);
+	mlx_put_image_to_window(game->mlx, game->win, game->screen.obj, 0, 0);
+}
+
+void	close(void)
+{
+	exit(0);
+}
+
+void	key_handling(int keycode, t_game *const game)
+{
+	if (keycode == ESC_KEY)
+		exit(1);
+	if (keycode == LEFT)
+	{
+		double	olddirx = game->dirx;
+		double olddiry = game->diry;
+		game->dirx = olddirx * cos(ANGLE) - olddiry * sin(ANGLE);
+		game->diry = olddirx * sin(ANGLE) + olddiry * cos(ANGLE);
+		double	oldplanx = game->planx;
+		double oldplany = game->plany;
+		game->planx = oldplanx * cos(ANGLE) - oldplany * sin(ANGLE);
+		game->plany = oldplanx * sin(ANGLE) + oldplany * cos(ANGLE);
+	}
+	else if (keycode == RIGHT)
+	{
+		double	olddirx = game->dirx;
+		double olddiry = game->diry;
+		game->dirx = olddirx * cos(-ANGLE) - olddiry * sin(-ANGLE);
+		game->diry = olddirx * sin(-ANGLE) + olddiry * cos(-ANGLE);
+		double	oldplanx = game->planx;
+		double oldplany = game->plany;
+		game->planx = oldplanx * cos(-ANGLE) - oldplany * sin(-ANGLE);
+		game->plany = oldplanx * sin(-ANGLE) + oldplany * cos(-ANGLE);
+	}
+	else if (keycode == W)
+	{
+		if (g_map[(int)(game->posx + game->dirx * SPEED)][(int)game->posy] != '1')
+			game->posx += (game->dirx * SPEED);
+		if (g_map[(int)game->posx][(int)(game->posy + game->diry * SPEED)] != '1')
+			game->posy += (game->diry * SPEED);
+	}
+	else if (keycode == S)
+	{
+		if (g_map[(int)(game->posx - game->dirx * SPEED)][(int)game->posy] != '1')
+			game->posx -= (game->dirx * SPEED);
+		if (g_map[(int)game->posx][(int)(game->posy - game->diry * SPEED)] != '1')
+			game->posy -= (game->diry * SPEED);
+	}
+	else if (keycode == A)
+	{
+		if (g_map[(int)(game->posx + game->dirx * SPEED)][(int)game->posy] != '1')
+			game->posx += (game->dirx * SPEED);
+		if (g_map[(int)game->posx][(int)(game->posy - game->diry * SPEED)] != '1')
+			game->posy -= (game->diry * SPEED);
+	}
+	else if (keycode == D)
+	{
+		if (g_map[(int)(game->posx - game->dirx * SPEED)][(int)game->posy] != '1')
+			game->posx -= (game->dirx * SPEED);
+		if (g_map[(int)game->posx][(int)(game->posy + game->diry * SPEED)] != '1')
+			game->posy += (game->diry * SPEED);
+	}
+	printf("%c\n", g_map[(int)game->posy][(int)game->posx]);
+	printf("%d %d\n", game->posx, game->posy);
+	render(game);
+}
+
+int	main(void)
+{
+	t_game	game;
+
+	// player
+	game.posx = 5;
+	game.posy = 3;
+	game.dirx = -1;
+	game.diry = 0;
+	game.planx = 0;
+	game.plany = 0.66;
+
+	// 창 초기화
+	game.mlx = mlx_init();
+	init_img(game.mlx, &game.screen);
+	game.win = mlx_new_window(game.mlx, WIDTH, HEIGHT, "cub3D");
+
+	// 텍스처 로딩
+	init_rsrcs(game.mlx, game.textures);
+	render(&game);
+
 	// 렌더링은 특별한 이벤트가 없다면 동일한 화면 유지(렌더링 x)
 
 	// 이벤트 처리
-	mlx_loop(mlx);
+	// x 버튼 눌렀을 때
+	mlx_hook(game.win, KEY_EXIT, 0, close, NULL);
+	// 키보드 입력
+	mlx_hook(game.win, KEY_PRESS, 0, key_handling, &game);
+	mlx_loop(game.mlx);
 	return (0);
 }
