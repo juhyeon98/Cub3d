@@ -18,18 +18,30 @@
 # define HEIGHT 600
 # define WIDTH 800
 
-# define NO 0xFF0000
-# define SO 0x00FF00
-# define WE 0x0000FF
-# define EA 0xFFFFFF
+# define NO "texture/north.png" //0xFF0000
+# define SO "texture/south.png" //0x00FF00
+# define WE "texture/west.png" //0x0000FF
+# define EA "texture/east.png" //0xFFFFFF
 
-# define FL 0x14471E
-# define CL 0x68904D
+# define FL 0x169C01
+# define CL 0x1FE5CF
 
+# define TXT_WIDTH 32
 # define ESC_KEY 53
 # define KEY_EXIT 17
 # define KEY_PRESS 2
 # define FOV 67
+
+typedef struct s_img
+{
+    void    *obj;
+    char    *addr;
+    int     bpp;
+    int     len;
+    int     endian;
+    int     w;
+    int     h;
+}t_img;
 
 //typedef struct s_r_vec
 //{

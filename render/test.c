@@ -24,37 +24,58 @@ char	*g_map[] = {
 	"1111111",
 };
 
-void	init_window(void *mlx, void *win, void *img)
+void	init_window(void *mlx, void *win, t_img *img)
 {
-	int	bpp, len, end;
-	char	*add = mlx_get_data_addr(img, &bpp, &len, &end);
-
 	mlx_clear_window(mlx, win);
 	for (int y = 0; y < HEIGHT / 2; y++)
 		for (int x = 0; x < WIDTH; x++)
-			*(unsigned int *)(add + y * len + (bpp / 8) * x) = CL;
+			*(unsigned int *)(img->addr + y * img->len + (img->bpp / 8) * x) = CL;
 	for (int y = HEIGHT / 2; y < HEIGHT; y++)
 		for (int x = 0; x < WIDTH; x++)
-			*(unsigned int *)(add + y * len + (bpp / 8) * x) = FL;
+			*(unsigned int *)(img->addr + y * img->len + (img->bpp / 8) * x) = FL;
+}
+
+void	init_img(void *mlx, t_img *img)
+{
+	img->obj = mlx_new_image(mlx, WIDTH, HEIGHT);
+	img->addr = mlx_get_data_addr(img->obj, &(img->bpp), &(img->len), &(img->endian));
+}
+
+void	init_rsrcs(void *mlx, t_img *rsrcs)
+{
+	rsrcs[0].obj = mlx_png_file_to_image(mlx, NO, &rsrcs[0].w, &rsrcs[0].h);
+	rsrcs[0].addr = mlx_get_data_addr(rsrcs[0].obj, &rsrcs[0].bpp, &rsrcs[0].len, &rsrcs[0].endian);
+	
+	rsrcs[1].obj = mlx_png_file_to_image(mlx, SO, &rsrcs[1].w, &rsrcs[1].h);
+	rsrcs[1].addr = mlx_get_data_addr(rsrcs[1].obj, &rsrcs[1].bpp, &rsrcs[1].len, &rsrcs[1].endian);
+	
+	rsrcs[2].obj = mlx_png_file_to_image(mlx, WE, &rsrcs[2].w, &rsrcs[2].h);
+	rsrcs[2].addr = mlx_get_data_addr(rsrcs[2].obj, &rsrcs[2].bpp, &rsrcs[2].len, &rsrcs[2].endian);
+	
+	rsrcs[3].obj = mlx_png_file_to_image(mlx, EA, &rsrcs[3].w, &rsrcs[3].h);
+	rsrcs[3].addr = mlx_get_data_addr(rsrcs[3].obj, &rsrcs[3].bpp, &rsrcs[3].len, &rsrcs[3].endian);
 }
 
 int	main(void)
 {
 	// player
 	double posx = 4, posy = 2;
-	double dirx = 0, diry = 1;
-	double planx = 0.66, plany = 0;
+	double dirx = -1, diry = 0;
+	double planx = 0, plany = 0.66;
 
 	// 창 초기화
 	void	*mlx = mlx_init();
 	void	*win = mlx_new_window(mlx, WIDTH, HEIGHT, "test");
-	void	*img = mlx_new_image(mlx, WIDTH, HEIGHT);
+	t_img	img;
 
-	//int	h, w;
-	//void	*test = mlx_png_file_to_image(mlx, "eagle.png", &w, &h);
+	init_img(mlx, &img);
+	init_window(mlx, win, &img);
 
-	init_window(mlx, win, img);
-	// 충돌 감지
+	// 텍스처 로딩
+	t_img	rsrcs[4];
+	init_rsrcs(mlx, rsrcs);
+
+	// 렌더링
 	int x;
 	for (x = 0; x < WIDTH; x++)
 	{
@@ -135,30 +156,45 @@ int	main(void)
 		int	end = hrate / 2 + HEIGHT / 2;
 		if (end >= HEIGHT)
 			end = HEIGHT - 1;
-		//printf("[%d] hrate : %d | %d ~ %d\n", x, hrate, start, end);
 
 		// 컬러 판단
-		int	color = 0;
+		size_t	index = 0;
 		if (hit_side == 0 && rayx < 0)
-			color = EA;
+			index = 3;
 		else if (hit_side == 0 && rayx >= 0)
-			color = WE;
+			index = 2;
 		else if (hit_side == 1 && rayy < 0)
-			color = SO;
+			index = 1;
 		else if (hit_side == 1 && rayy >= 0)
-			color = NO;
+			index = 0;
+
+		// 그릴 위치 구하기
+		double	wallx;
+		if (hit_side == 0)
+			wallx = posy + dis * rayy;
+		else
+			wallx = posx + dis * rayx;
+		wallx -= floor(wallx);
+		
+		int textx = (int)(wallx * (double)(TXT_WIDTH));
+		if (hit_side == 0 && rayx > 0)
+			textx = TXT_WIDTH - textx - 1;
+		else if (hit_side == 1 && rayy < 0)
+			textx = TXT_WIDTH - textx - 1;
 
 		// 그리기
-		int	bpp, len, endian;
-		char	*addr = mlx_get_data_addr(img, &bpp, &len, &endian);
-		for (int index = start; index < end; index++)
+		for (int s_idx = start; s_idx < end; s_idx++)
 		{
-			char	*col = addr + (index * len + x * (bpp / 8));
-			*(unsigned int *)col = color;
+			int	i32 = TXT_WIDTH * (s_idx - start) / (end - start);
+			char	*screen = img.addr + (s_idx * img.len + x * (img.bpp / 8));
+			char	*text = rsrcs[index].addr + (i32 * rsrcs[index].len + textx * (rsrcs[index].bpp / 8));
+			*(unsigned int *)(screen) = *(unsigned int *)(text);
 		}
 	}
-	mlx_put_image_to_window(mlx, win, img, 0, 0);
-	//printf("\n%d\n", x);
+	mlx_put_image_to_window(mlx, win, img.obj, 0, 0);
+	// 렌더링은 특별한 이벤트가 없다면 동일한 화면 유지(렌더링 x)
+
+	// 이벤트 처리
 	mlx_loop(mlx);
 	return (0);
 }

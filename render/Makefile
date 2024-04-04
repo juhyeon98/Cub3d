@@ -7,7 +7,7 @@ OBJS=$(SRCS:.c=.o)
 MLXDIR=mlx
 MLX=$(MLXDIR)/libmlx.dylib
 
-# export DYLD_LIBRARY_PATH=~/test/mlx
+# export DYLD_LIBRARY_PATH=/Users/juhyelee/Cub3d/render/mlx
 
 all: $(NAME)
 
