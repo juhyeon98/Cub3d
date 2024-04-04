@@ -18,7 +18,7 @@ $(MLX):
 	make -C $(MLXDIR)
 
 %.o: %.c
-	$(CC) $(CFLAG) -c $< -o $@
+	$(CC) $(CFLAG) -g3 -c $< -o $@
 
 clean:
 	rm -rf $(OBJS)

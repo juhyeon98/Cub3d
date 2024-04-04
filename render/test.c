@@ -16,13 +16,20 @@
 #include <stdlib.h>
 
 char	*g_map[] = {
-	"11111111111",
-	"10000000001",
-	"10000000001",
-	"10000E00001",
-	"10000000001",
-	"10000000001",
-	"11111111111",
+    "        1111111111111111111111111",
+    "        1000000000110000000000001",
+    "        1011000001110000000000001",
+    "        1001000000000000000000001",
+    "111111111011000001110000000000001",
+    "100000000011000001110111110111111",
+    "11110111111111011100000010001    ",
+    "11110111111111011101010010001    ",
+    "11000000110101011100000010001    ",
+    "10000000000000001100000010001    ",
+    "10000000000000001101010010001    ",
+    "11000001110101011111011110N0111  ",
+    "11110111 1110101 101111110001    ",
+    "11111111 1111111 111111111111    "
 };
 
 void	init_window(void *mlx, void *win, t_img *img)
@@ -176,7 +183,7 @@ void	render(t_game *game)
 			if (h_over < 1) i32 = TXT_WIDTH * (s_idx - start) / (end - start); //height
 			else i32 = (int)((TXT_WIDTH - (double)TXT_WIDTH / h_over) / 2 + ((double)TXT_WIDTH / h_over) * (s_idx - start) / (double)(end - start));
 			char	*screen = game->screen.addr + (s_idx * game->screen.len + x * (game->screen.bpp / 8));
-			char	*text = game->textures[index].addr + (i32 * game->textures[index].len + textx * (game->textures[index].bpp / 8));
+			char	*text = game->textures[index].addr + (i32 * game->textures[index].len + (31 - textx) * (game->textures[index].bpp / 8));
 			*(unsigned int *)(screen) = *(unsigned int *)(text);
 		}
 	}
@@ -192,7 +199,7 @@ void	key_handling(int keycode, t_game *const game)
 {
 	if (keycode == ESC_KEY)
 		exit(1);
-	if (keycode == LEFT)
+	if (keycode == RIGHT)
 	{
 		double	olddirx = game->dirx;
 		double olddiry = game->diry;
@@ -203,7 +210,7 @@ void	key_handling(int keycode, t_game *const game)
 		game->planx = oldplanx * cos(ANGLE) - oldplany * sin(ANGLE);
 		game->plany = oldplanx * sin(ANGLE) + oldplany * cos(ANGLE);
 	}
-	else if (keycode == RIGHT)
+	else if (keycode == LEFT)
 	{
 		double	olddirx = game->dirx;
 		double olddiry = game->diry;
@@ -216,34 +223,34 @@ void	key_handling(int keycode, t_game *const game)
 	}
 	else if (keycode == W)
 	{
-		if (g_map[(int)(game->posx + game->dirx * SPEED)][(int)game->posy] != '1')
+		printf("%c\n", g_map[(int)game->posy][(int)game->posx]);
+		printf("%lf %lf\n", game->posx, game->posy);
+		if (g_map[(int)(game->posy)][(int)(game->posx + game->dirx * SPEED)] != '1')
 			game->posx += (game->dirx * SPEED);
-		if (g_map[(int)game->posx][(int)(game->posy + game->diry * SPEED)] != '1')
+		if (g_map[(int)(game->posy + game->diry * SPEED)][(int)(game->posx)] != '1')
 			game->posy += (game->diry * SPEED);
 	}
 	else if (keycode == S)
 	{
-		if (g_map[(int)(game->posx - game->dirx * SPEED)][(int)game->posy] != '1')
+		if (g_map[(int)(game->posy)][(int)(game->posx - game->dirx * SPEED)] != '1')
 			game->posx -= (game->dirx * SPEED);
-		if (g_map[(int)game->posx][(int)(game->posy - game->diry * SPEED)] != '1')
-			game->posy -= (game->diry * SPEED);
-	}
-	else if (keycode == A)
-	{
-		if (g_map[(int)(game->posx + game->dirx * SPEED)][(int)game->posy] != '1')
-			game->posx += (game->dirx * SPEED);
-		if (g_map[(int)game->posx][(int)(game->posy - game->diry * SPEED)] != '1')
+		if (g_map[(int)(game->posy - game->diry * SPEED)][(int)(game->posx)] != '1')
 			game->posy -= (game->diry * SPEED);
 	}
 	else if (keycode == D)
 	{
-		if (g_map[(int)(game->posx - game->dirx * SPEED)][(int)game->posy] != '1')
-			game->posx -= (game->dirx * SPEED);
-		if (g_map[(int)game->posx][(int)(game->posy + game->diry * SPEED)] != '1')
-			game->posy += (game->diry * SPEED);
+		if (g_map[(int)(game->posy)][(int)(game->posx - game->diry * SPEED)] != '1')
+			game->posx -= (game->diry * SPEED);
+		if (g_map[(int)(game->posy + game->dirx * SPEED)][(int)(game->posx)] != '1')
+			game->posy += (game->dirx * SPEED);
 	}
-	printf("%c\n", g_map[(int)game->posy][(int)game->posx]);
-	printf("%d %d\n", game->posx, game->posy);
+	else if (keycode == A)
+	{
+		if (g_map[(int)(game->posy)][(int)(game->posx + game->diry * SPEED)]!= '1')
+			game->posx += (game->diry * SPEED);
+		if (g_map[(int)(game->posy - game->dirx * SPEED)][(int)(game->posx)] != '1')
+			game->posy -= (game->dirx * SPEED);
+	}
 	render(game);
 }
 
@@ -251,13 +258,14 @@ int	main(void)
 {
 	t_game	game;
 
+// init
 	// player
-	game.posx = 5;
-	game.posy = 3;
-	game.dirx = -1;
-	game.diry = 0;
-	game.planx = 0;
-	game.plany = 0.66;
+	game.posx = 26;
+	game.posy = 11;
+	game.dirx = 0;
+	game.diry = -1;
+	game.planx = 0.87;
+	game.plany = 0;
 
 	// 창 초기화
 	game.mlx = mlx_init();
@@ -266,9 +274,9 @@ int	main(void)
 
 	// 텍스처 로딩
 	init_rsrcs(game.mlx, game.textures);
-	render(&game);
 
-	// 렌더링은 특별한 이벤트가 없다면 동일한 화면 유지(렌더링 x)
+// play
+	render(&game);
 
 	// 이벤트 처리
 	// x 버튼 눌렀을 때

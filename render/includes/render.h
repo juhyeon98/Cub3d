@@ -15,8 +15,8 @@
 
 # include "../mlx/mlx.h"
 
-# define HEIGHT 600
-# define WIDTH 800
+# define HEIGHT 1080
+# define WIDTH 1920
 
 # define NO "texture/north.png" //0xFF0000
 # define SO "texture/south.png" //0x00FF00
@@ -38,34 +38,38 @@
 # define KEY_PRESS 2
 # define FOV 67
 
-# define ANGLE 0.01
-# define SPEED 0.1
+# define ANGLE 0.1
+# define SPEED 0.3
 # define COLLISION 0.5
 
 typedef struct s_img
 {
-    void	*obj;
-    char    *addr;
-    int     bpp;
-    int     len;
-    int     endian;
-    int     w;
-    int     h;
+	void	*obj;
+	char	*addr;
+	int		bpp;
+	int		len;
+	int		endian;
+	int		w;
+	int		h;
 }t_img;
 
 typedef struct s_game
 {
-    void    *mlx;
-    void    *win;
-    t_img   screen;
-    t_img   textures[4];
-    double  posx;
-    double  posy;
-    double  dirx;
-    double  diry;
-    double  planx;
-    double  plany;
+	void	*mlx;
+	void	*win;
+	t_img	screen;
+	t_img	textures[4];
+	double	posx;
+	double	posy;
+	double	dirx;
+	double	diry;
+	double	planx;
+	double	plany;
 }t_game;
+
+typedef struct s_player
+{
+}t_player;
 
 //typedef struct s_r_vec
 //{
