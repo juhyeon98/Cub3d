@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: taeoh <taeoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 11:17:13 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/04/09 15:06:11 by juhyelee         ###   ########.fr       */
+/*   Updated: 2024/04/09 15:16:35 by taeoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,9 @@ void	resource_error(enum e_error num)
 		ft_putendl_fd("Too many color", STDERR_FILENO);
 	else if (num == E_COL_INVAL)
 		ft_putendl_fd("Invalid color", STDERR_FILENO);
-	else if (num == E_PNG_FAIL)
+	else if (num == E_XPM_NOTFE)
+		ft_putendl_fd("Not xpm file", STDERR_FILENO);
+	else if (num == E_XPM_FAIL)
 		ft_putendl_fd("Failed to load image file", STDERR_FILENO);
 }
 

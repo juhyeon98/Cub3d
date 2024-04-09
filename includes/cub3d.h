@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: taeoh <taeoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 10:43:32 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/04/09 14:58:01 by juhyelee         ###   ########.fr       */
+/*   Updated: 2024/04/09 15:15:39 by taeoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,8 @@ enum e_error
 	E_COL_LACK,
 	E_COL_MANY,
 	E_COL_INVAL,
-	E_PNG_FAIL,
+	E_XPM_NOTFE,
+	E_XPM_FAIL,
 	E_MAP_NOTFD,
 	E_MAP_OTHEL,
 	E_MAP_INVAL,

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   window.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: taeoh <taeoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 13:07:29 by taeoh             #+#    #+#             */
-/*   Updated: 2024/04/09 15:06:01 by juhyelee         ###   ########.fr       */
+/*   Updated: 2024/04/09 15:16:56 by taeoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,10 +69,17 @@ void	set_position(t_game *game, char **map)
 
 void	set_png_images(t_game *game, t_img *ts, int i)
 {
+	size_t	len;
+
+	len = ft_strlen(game->rsrc.textures[i]);
+	if (len < 4)
+		print_error(E_XPM_NOTFE);
+	if (ft_strncmp(game->rsrc.textures[i] + (len - 4), ".xpm", 4) != 0)
+		print_error(E_XPM_NOTFE);
 	ts[i].obj = mlx_xpm_file_to_image(game->mlx, \
 					game->rsrc.textures[i], &ts[i].w, &ts[i].h);
 	if (ts[i].obj == NULL)
-		print_error(E_PNG_FAIL);
+		print_error(E_XPM_FAIL);
 	ts[i].addr = mlx_get_data_addr(ts[i].obj, &ts[i].bpp, \
 					&ts[i].len, &ts[i].endian);
 }
@@ -81,7 +88,7 @@ void	set_images(t_game *game, t_img *sc, t_img *ts)
 {
 	sc->obj = mlx_new_image(game->mlx, WIDTH, HEIGHT);
 	if (sc->obj == NULL)
-		print_error(E_PNG_FAIL);
+		print_error(E_XPM_FAIL);
 	sc->addr = mlx_get_data_addr(sc->obj, &sc->bpp, &sc->len, &sc->endian);
 	set_png_images(game, ts, 0);
 	set_png_images(game, ts, 1);
