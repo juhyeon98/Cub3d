@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+         #
+#    By: taeoh <taeoh@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/28 11:02:51 by juhyelee          #+#    #+#              #
-#    Updated: 2024/04/09 14:53:34 by juhyelee         ###   ########.fr        #
+#    Updated: 2024/04/09 15:27:04 by taeoh            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,7 @@ OBJS = ${SRCS:.c=.o}
 MK = make -C
 RM = rm -rf
 CC = cc
-CFLAG = -Wall -Wextra -Werror -I${INCS}
+CFLAG = -Wall -Wextra -Werror -I${INCS} -g3
 LFLAG = -Llibft -lft -Lmlx -lmlx -framework OpenGL -framework AppKit
 
 NAME = cub3D

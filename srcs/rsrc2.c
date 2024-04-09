@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rsrc2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: taeoh <taeoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 17:04:10 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/04/02 11:48:46 by juhyelee         ###   ########.fr       */
+/*   Updated: 2024/04/09 15:32:38 by taeoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 t_color	convert_color(char const *str)
 {
-	t_color	color;
-	char	*col_str;
+	unsigned char	color;
+	char			*col_str;
 
 	color = ft_atoi(str);
 	col_str = ft_itoa(color);
