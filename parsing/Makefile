@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+         #
+#    By: taeoh <taeoh@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/28 11:02:51 by juhyelee          #+#    #+#              #
-#    Updated: 2024/04/03 12:07:21 by juhyelee         ###   ########.fr        #
+#    Updated: 2024/04/09 13:08:22 by taeoh            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,14 +20,15 @@ SRCS = srcs/main.c \
 	   srcs/rsrc2.c \
 	   srcs/map1.c \
 	   srcs/map2.c \
-	   srcs/map3.c
+	   srcs/map3.c \
+	   srcs/window.c
 OBJS = ${SRCS:.c=.o}
 
 MK = make -C
 RM = rm -rf
 CC = cc
 CFLAG = -Wall -Wextra -Werror -I${INCS} -g3
-LFLAG = -Llibft -lft
+LFLAG = -Llibft -lft -Lmlx -lmlx -framework OpenGL -framework AppKit
 
 NAME = cub3D
 

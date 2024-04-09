@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: taeoh <taeoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 12:14:08 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/03/28 17:16:18 by juhyelee         ###   ########.fr       */
+/*   Updated: 2024/04/09 13:08:00 by taeoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 int	main(int argc, char *argv[])
 {
-	t_rsrc	rsrc;
-	t_map	map;
+	t_game	game;
 
 	if (argc < 2)
 		print_error(E_ARG_LACK);
 	else if (argc > 2)
 		print_error(E_ARG_MANY);
-	parse(&map, &rsrc, argv[1]);
+	parse(&game.map, &game.rsrc, argv[1]);
+	load_window(&game);
 	return (0);
 }
 

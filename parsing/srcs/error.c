@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: taeoh <taeoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 11:17:13 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/04/02 11:49:13 by juhyelee         ###   ########.fr       */
+/*   Updated: 2024/04/09 12:54:47 by taeoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ void	resource_error(enum e_error num)
 		ft_putendl_fd("Too many color", STDERR_FILENO);
 	else if (num == E_COL_INVAL)
 		ft_putendl_fd("Invalid color", STDERR_FILENO);
+	else if (num == E_PNG_FAIL)
+		ft_putendl_fd("Faied to load png file", STDERR_FILENO);
 }
 
 void	map_error(enum e_error num)
@@ -62,4 +64,6 @@ void	map_error(enum e_error num)
 		ft_putendl_fd("Too many player in map", STDERR_FILENO);
 	else if (num == E_MAP_NOPLAYER)
 		ft_putendl_fd("Not contain player in map", STDERR_FILENO);
+	else if (num == E_MLX)
+		ft_putendl_fd("MLX error", STDERR_FILENO);
 }
