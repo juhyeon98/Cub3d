@@ -6,7 +6,7 @@
 /*   By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 11:17:13 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/04/09 14:51:07 by juhyelee         ###   ########.fr       */
+/*   Updated: 2024/04/09 15:06:11 by juhyelee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	resource_error(enum e_error num)
 	else if (num == E_COL_INVAL)
 		ft_putendl_fd("Invalid color", STDERR_FILENO);
 	else if (num == E_PNG_FAIL)
-		ft_putendl_fd("Failed to load png file", STDERR_FILENO);
+		ft_putendl_fd("Failed to load image file", STDERR_FILENO);
 }
 
 void	map_error(enum e_error num)

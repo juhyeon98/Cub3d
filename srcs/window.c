@@ -6,7 +6,7 @@
 /*   By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 13:07:29 by taeoh             #+#    #+#             */
-/*   Updated: 2024/04/09 14:30:19 by juhyelee         ###   ########.fr       */
+/*   Updated: 2024/04/09 15:06:01 by juhyelee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	set_position(t_game *game, char **map)
 
 void	set_png_images(t_game *game, t_img *ts, int i)
 {
-	ts[i].obj = mlx_png_file_to_image(game->mlx, \
+	ts[i].obj = mlx_xpm_file_to_image(game->mlx, \
 					game->rsrc.textures[i], &ts[i].w, &ts[i].h);
 	if (ts[i].obj == NULL)
 		print_error(E_PNG_FAIL);
