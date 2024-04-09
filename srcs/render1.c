@@ -3,33 +3,48 @@
 /*                                                        :::      ::::::::   */
 /*   render1.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: taeoh <taeoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 10:55:33 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/04/09 14:22:06 by juhyelee         ###   ########.fr       */
+/*   Updated: 2024/04/09 16:41:11 by taeoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
+# include <sys/time.h>
+#include <stdio.h>
+
+long	get_time(long init_time)
+{
+	struct timeval	tv;
+	long			time_ms;
+
+	gettimeofday(&tv, NULL);
+	time_ms = 1000 * tv.tv_sec + tv.tv_usec / 1000;
+	return (time_ms - init_time);
+}
 
 void	render(t_game *game)
 {
-	t_ray	ray;
 	size_t	w_idx;
+	long		s_t = get_time(0); 
+	long		e_t = s_t;
 
 	init_window(game->mlx, game->win, &game->screen, &game->rsrc);
 	w_idx = 0;
 	while (w_idx < WIDTH)
 	{
-		init_ray(*game, &ray, w_idx);
-		detech_wall(&ray, game->map);
-		set_distance(*game, &ray);
-		select_texture(&ray);
-		set_texture_index(*game, &ray);
-		draw_texture(game, ray, w_idx);
+		init_ray(*game, &game->ray, w_idx);
+		detech_wall(&game->ray, game->map);
+		set_distance(*game, &game->ray);
+		select_texture(&game->ray);
+		set_texture_index(*game, &game->ray);
+		draw_texture(game, game->ray, w_idx);
 		w_idx++;
 	}
 	mlx_put_image_to_window(game->mlx, game->win, game->screen.obj, 0, 0);
+	e_t = get_time(s_t);
+	printf("%ld\n", e_t);
 }
 
 void	set_back(t_img *const img, size_t const h_idx, t_color const col)

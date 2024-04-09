@@ -6,7 +6,7 @@
 /*   By: taeoh <taeoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 10:43:32 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/04/09 15:40:17 by taeoh            ###   ########.fr       */
+/*   Updated: 2024/04/09 16:53:13 by taeoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,10 @@
 
 # define BUFF_SZ 31
 
-# define HEIGHT 720
-# define WIDTH 1280
+# define HEIGHT 1080
+# define WIDTH 1920
+// # define HEIGHT 720
+// # define WIDTH 1280
 # define TXT_WIDTH 32
 
 # define ESC_KEY 53
@@ -39,7 +41,7 @@
 # define FOV 0.87
 
 # define ANGLE 0.1
-# define SPEED 0.3
+# define SPEED 0.1
 # define COLLISION 0.5
 
 # define RIGHT_DIR -1
@@ -114,28 +116,6 @@ typedef struct s_img
 	int		h;
 }t_img;
 
-typedef struct s_game
-{
-	t_rsrc	rsrc;
-	t_map	map;
-
-	t_img	screen;
-	t_img	textures[4];
-
-	void	*mlx;
-	void	*win;
-
-	double	posx;
-	double	posy;
-	double	dirx;
-	double	diry;
-	double	planx;
-	double	plany;
-
-	int		time;
-	int		f_time;
-}t_game;
-
 typedef struct s_ray
 {
 	double	rayx;
@@ -160,6 +140,30 @@ typedef struct s_ray
 	t_type	index;
 	size_t	t_idx;
 }t_ray;
+
+typedef struct s_game
+{
+	t_rsrc	rsrc;
+	t_map	map;
+
+	t_img	screen;
+	t_img	textures[4];
+
+	void	*mlx;
+	void	*win;
+
+	double	posx;
+	double	posy;
+	double	dirx;
+	double	diry;
+	double	planx;
+	double	plany;
+
+	int		time;
+	int		f_time;
+	t_ray	ray;
+}t_game;
+
 
 void	print_error(enum e_error num);
 void	resource_error(enum e_error num);

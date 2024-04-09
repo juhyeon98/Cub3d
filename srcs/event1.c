@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   event1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: taeoh <taeoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 12:48:12 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/04/09 14:14:10 by juhyelee         ###   ########.fr       */
+/*   Updated: 2024/04/09 17:07:39 by taeoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
+#include <stdio.h>
 
 int	exit_program(void)
 {
@@ -68,9 +69,20 @@ void	move_forward(t_game *const game)
 {
 	double const	diffx = game->posx + game->dirx * SPEED;
 	double const	diffy = game->posy + game->diry * SPEED;
+	double			xflag;
+	double			yflag;
 
-	if (game->map.map[(int)game->posy][(int)diffx] != '1')
+	if (game->dirx <= 0)
+		xflag = 0.1;
+	else
+		xflag = -0.1;
+	if (game->diry <= 0)
+		yflag = 0.1;
+	else
+		yflag = -0.1;
+	// if (game->map.map[(int)game->posy][(int)diffx] != '1' && game->posx  diffx - 0.1f)
+	if (game->map.map[(int)game->posy][(int)(diffx - xflag)] != '1')
 		game->posx = diffx;
-	if (game->map.map[(int)diffy][(int)game->posx] != '1')
+	if (game->map.map[(int)(diffy - yflag)][(int)game->posx] != '1')
 		game->posy = diffy;
 }
