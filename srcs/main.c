@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: taeoh <taeoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 12:14:08 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/04/09 14:14:46 by juhyelee         ###   ########.fr       */
+/*   Updated: 2024/04/09 15:46:46 by taeoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	main(int argc, char *argv[])
 	mlx_hook(game.win, KEY_EXIT, 0, exit_program, NULL);
 	mlx_hook(game.win, KEY_PRESS, 0, key_handling, &game);
 	mlx_loop(game.mlx);
-	return (0);
+	exit(0);
 }
 
 void	parse(t_map *const map, t_rsrc *const rsrc, \

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: taeoh <taeoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 11:31:36 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/04/09 14:26:17 by juhyelee         ###   ########.fr       */
+/*   Updated: 2024/04/09 15:43:31 by taeoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	set_distance(t_game const game, t_ray *const ray)
 		ray->start = 0;
 	ray->end = ray->to_draw / 2 + HEIGHT / 2;
 	if (ray->end >= HEIGHT)
-		ray->end = HEIGHT - 1;
+		ray->end = HEIGHT;
 }
 
 void	select_texture(t_ray *const ray)
@@ -76,9 +76,9 @@ void	set_texture_index(t_game const game, t_ray *const ray)
 		wallx = game.posx + ray->dis * ray->rayx;
 	wallx -= floor(wallx);
 	ray->t_idx = (int)(wallx * (double)(TXT_WIDTH));
-	if (ray->hit_side == 0 && ray->rayx > 0)
+	if (ray->hit_side == DETC_Y && ray->rayx > 0)
 		ray->t_idx = TXT_WIDTH - ray->t_idx - 1;
-	else if (ray->hit_side == 1 && ray->rayy < 0)
+	else if (ray->hit_side == DETC_X && ray->rayy < 0)
 		ray->t_idx = TXT_WIDTH - ray->t_idx - 1;
 }
 

@@ -6,7 +6,7 @@
 /*   By: taeoh <taeoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 13:07:29 by taeoh             #+#    #+#             */
-/*   Updated: 2024/04/09 15:16:56 by taeoh            ###   ########.fr       */
+/*   Updated: 2024/04/09 15:49:25 by taeoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,8 @@ void	set_position(t_game *game, char **map)
 			if (map[y][x] == 'N' || map[y][x] == 'S' \
 				|| map[y][x] == 'E' || map[y][x] == 'W')
 			{
-				// game->posx = x + 0.5;
-				// game->posy = y + 0.5;
-				game->posx = x;
-				game->posy = y;
+				game->posx = x + 0.5;
+				game->posy = y + 0.5;
 				game->dirx = -1 * (map[y][x] == 'W') + (map[y][x] == 'E');
 				game->diry = -1 * (map[y][x] == 'N') + (map[y][x] == 'S');
 				game->planx = -1 * game->diry * FOV;
@@ -103,7 +101,6 @@ void	load_window(t_game *game)
 		print_error(E_MLX);
 	set_position(game, game->map.map);
 	set_images(game, &game->screen, game->textures);
-	// printf("%f %f %f %f %f %f\n", game->posx, game->posy, game->dirx, game->diry, game->planx, game->plany);//
 	game->win = mlx_new_window(game->mlx, WIDTH, HEIGHT, "cub3D");
 	if (game->win == NULL)
 		print_error(E_MLX);
