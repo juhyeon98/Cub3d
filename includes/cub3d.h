@@ -6,7 +6,7 @@
 /*   By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 10:43:32 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/04/09 13:50:52 by juhyelee         ###   ########.fr       */
+/*   Updated: 2024/04/09 14:16:48 by juhyelee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@
 
 # define BUFF_SZ 31
 
-# define HEIGHT 1080
-# define WIDTH 1920
+# define HEIGHT 600
+# define WIDTH 800
 # define TXT_WIDTH 32
 
 # define ESC_KEY 53
@@ -116,14 +116,14 @@ typedef struct s_img
 
 typedef struct s_game
 {
-	t_rsrc rsrc;
-	t_map map;
-	
-	void	*mlx;
-	void	*win;
-	
+	t_rsrc	rsrc;
+	t_map	map;
+
 	t_img	screen;
 	t_img	textures[4];
+
+	void	*mlx;
+	void	*win;
 
 	double	posx;
 	double	posy;

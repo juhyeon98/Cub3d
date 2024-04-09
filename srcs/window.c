@@ -6,7 +6,7 @@
 /*   By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 13:07:29 by taeoh             #+#    #+#             */
-/*   Updated: 2024/04/09 13:50:14 by juhyelee         ###   ########.fr       */
+/*   Updated: 2024/04/09 14:04:25 by juhyelee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	init_window(void *mlx, void *win, t_img *img, t_rsrc *rsrc)
 {
 	size_t	x;
 	size_t	y;
-	
+
 	mlx_clear_window(mlx, win);
 	x = -1;
 	y = -1;
@@ -54,6 +54,8 @@ void	set_position(t_game *game, char **map)
 			{
 				game->posx = x + 0.5;
 				game->posy = y + 0.5;
+				// game->posx = x;
+				// game->posy = y;
 				game->dirx = -1 * (map[y][x] == 'W') + (map[y][x] == 'E');
 				game->diry = -1 * (map[y][x] == 'N') + (map[y][x] == 'S');
 				game->planx = -1 * game->diry * FOV;
@@ -63,7 +65,6 @@ void	set_position(t_game *game, char **map)
 		}
 		x = -1;
 	}
-	//못찾은경우?
 }
 
 void	set_png_images(t_game *game, t_img *ts, int i)
