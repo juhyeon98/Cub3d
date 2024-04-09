@@ -6,7 +6,7 @@
 /*   By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 10:43:32 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/04/09 14:16:48 by juhyelee         ###   ########.fr       */
+/*   Updated: 2024/04/09 14:24:38 by juhyelee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@
 
 # define BUFF_SZ 31
 
-# define HEIGHT 600
-# define WIDTH 800
+# define HEIGHT 720
+# define WIDTH 1280
 # define TXT_WIDTH 32
 
 # define ESC_KEY 53
@@ -131,6 +131,9 @@ typedef struct s_game
 	double	diry;
 	double	planx;
 	double	plany;
+
+	int		time;
+	int		f_time;
 }t_game;
 
 typedef struct s_ray

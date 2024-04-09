@@ -6,7 +6,7 @@
 /*   By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 13:07:29 by taeoh             #+#    #+#             */
-/*   Updated: 2024/04/09 14:04:25 by juhyelee         ###   ########.fr       */
+/*   Updated: 2024/04/09 14:30:19 by juhyelee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ void	init_window(void *mlx, void *win, t_img *img, t_rsrc *rsrc)
 	while (++y < HEIGHT)
 	{
 		while (++x < WIDTH)
-			*(unsigned int *)(img->addr + y * img->len + (img->bpp / 8) * x)\
-				 = rsrc->cl_color;
+			*(unsigned int *)(img->addr + y * img->len + (img->bpp / 8) * x) \
+				= rsrc->cl_color;
 		x = -1;
 	}
 }
@@ -52,14 +52,14 @@ void	set_position(t_game *game, char **map)
 			if (map[y][x] == 'N' || map[y][x] == 'S' \
 				|| map[y][x] == 'E' || map[y][x] == 'W')
 			{
-				game->posx = x + 0.5;
-				game->posy = y + 0.5;
-				// game->posx = x;
-				// game->posy = y;
+				// game->posx = x + 0.5;
+				// game->posy = y + 0.5;
+				game->posx = x;
+				game->posy = y;
 				game->dirx = -1 * (map[y][x] == 'W') + (map[y][x] == 'E');
 				game->diry = -1 * (map[y][x] == 'N') + (map[y][x] == 'S');
 				game->planx = -1 * game->diry * FOV;
-				game->plany = -1 * game->dirx * FOV;
+				game->plany = game->dirx * FOV;
 				return ;
 			}
 		}
