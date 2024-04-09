@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rsrc.c                                             :+:      :+:    :+:   */
+/*   rsrc1.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: taeoh <taeoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 11:59:12 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/03/28 17:10:47 by juhyelee         ###   ########.fr       */
+/*   Updated: 2024/04/09 12:23:48 by taeoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,10 @@ void	init_resource(t_rsrc *const rsrc, int const fd)
 			set_color(rsrc->colors[type - 4], line + 1);
 		free(line);
 	}
+	rsrc->cl_color = (rsrc->colors[0][0] << 16) | (rsrc->colors[0][1] << 8);
+	rsrc->cl_color = rsrc->cl_color | rsrc->colors[0][2];
+	rsrc->fl_color = (rsrc->colors[1][0] << 16) | (rsrc->colors[1][1] << 8);
+	rsrc->fl_color = rsrc->fl_color | rsrc->colors[1][2];
 }
 
 t_type	get_type(char const *str)
