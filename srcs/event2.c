@@ -6,11 +6,11 @@
 /*   By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 13:01:52 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/04/09 13:20:03 by juhyelee         ###   ########.fr       */
+/*   Updated: 2024/04/09 13:49:07 by juhyelee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/render.h"
+#include "../includes/cub3d.h"
 
 void	move_back(t_game *const game)
 {

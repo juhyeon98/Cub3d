@@ -3,15 +3,20 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: taeoh <taeoh@student.42.fr>                +#+  +:+       +#+         #
+#    By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/28 11:02:51 by juhyelee          #+#    #+#              #
-#    Updated: 2024/04/09 13:08:22 by taeoh            ###   ########.fr        #
+#    Updated: 2024/04/09 13:56:17 by juhyelee         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+# export DYLD_LIBRARY_PATH=/Users/juhyelee/Cub3d/mlx
+
 LIBFTDIR = libft
 LIBFT = ${LIBFTDIR}/libft.a
+MLXDIR = mlx
+MLX = $(MLXDIR)/libmlx.dylib
+
 INCS = includes
 SRCS = srcs/main.c \
 	   srcs/error.c \
@@ -21,13 +26,17 @@ SRCS = srcs/main.c \
 	   srcs/map1.c \
 	   srcs/map2.c \
 	   srcs/map3.c \
-	   srcs/window.c
+	   srcs/window.c \
+	   srcs/render1.c \
+	   srcs/render2.c \
+	   srcs/event1.c \
+	   srcs/event2.c
 OBJS = ${SRCS:.c=.o}
 
 MK = make -C
 RM = rm -rf
 CC = cc
-CFLAG = -Wall -Wextra -Werror -I${INCS} -g3
+CFLAG = -Wall -Wextra -Werror -I${INCS}
 LFLAG = -Llibft -lft -Lmlx -lmlx -framework OpenGL -framework AppKit
 
 NAME = cub3D
@@ -44,9 +53,11 @@ fclean :
 	${MK} ${LIBFTDIR} fclean
 re : fclean all
 
-${NAME} : ${OBJS} ${LIBFT}
+${NAME} : ${OBJS} ${LIBFT} ${MLX}
 	${CC} ${LFLAG} $^ -o $@
 ${LIBFT} :
 	${MK} ${LIBFTDIR}
+$(MLX):
+	make -C $(MLXDIR)
 %.o : %.c
 	${CC} ${CFLAG} $< -o $@ -c

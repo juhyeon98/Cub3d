@@ -6,11 +6,11 @@
 /*   By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 11:31:36 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/04/09 12:47:40 by juhyelee         ###   ########.fr       */
+/*   Updated: 2024/04/09 13:48:45 by juhyelee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/render.h"
+#include "../includes/cub3d.h"
 
 void	detech_wall(t_ray *const ray, t_map const map)
 {

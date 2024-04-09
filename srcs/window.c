@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   window.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taeoh <taeoh@student.42.fr>                +#+  +:+       +#+        */
+/*   By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 13:07:29 by taeoh             #+#    #+#             */
-/*   Updated: 2024/04/09 13:08:09 by taeoh            ###   ########.fr       */
+/*   Updated: 2024/04/09 13:50:14 by juhyelee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,5 +102,4 @@ void	load_window(t_game *game)
 	init_window(game->mlx, game->win, &game->screen, &game->rsrc);
 	mlx_put_image_to_window(game->mlx, game->win, game->screen.obj, 0, 0);
 	ft_putendl_fd("success load window", STDOUT_FILENO);
-	mlx_loop(game->mlx);
 }

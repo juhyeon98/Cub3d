@@ -6,13 +6,13 @@
 /*   By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 12:48:12 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/04/09 13:08:41 by juhyelee         ###   ########.fr       */
+/*   Updated: 2024/04/09 13:52:53 by juhyelee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/render.h"
+#include "../includes/cub3d.h"
 
-int	close(void)
+int	exit_program(void)
 {
 	exit(0);
 	return (0);

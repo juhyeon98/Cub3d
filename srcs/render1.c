@@ -6,18 +6,18 @@
 /*   By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 10:55:33 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/04/09 13:25:42 by juhyelee         ###   ########.fr       */
+/*   Updated: 2024/04/09 13:49:20 by juhyelee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/render.h"
+#include "../includes/cub3d.h"
 
 void	render(t_game *game)
 {
 	t_ray	ray;
 	size_t	w_idx;
 
-	init_window(game->mlx, game->win, &game->screen);
+	init_window(game->mlx, game->win, &game->screen, &game->rsrc);
 	w_idx = 0;
 	while (w_idx < WIDTH)
 	{
@@ -30,24 +30,6 @@ void	render(t_game *game)
 		w_idx++;
 	}
 	mlx_put_image_to_window(game->mlx, game->win, game->screen.obj, 0, 0);
-}
-
-void	init_window(void *mlx, void *win, t_img *img)
-{
-	size_t	h_idx;
-
-	mlx_clear_window(mlx, win);
-	h_idx = 0;
-	while (h_idx < HEIGHT / 2)
-	{
-		set_back(img, h_idx, CL);
-		h_idx++;
-	}
-	while (h_idx < HEIGHT)
-	{
-		set_back(img, h_idx, FL);
-		h_idx++;
-	}
 }
 
 void	set_back(t_img *const img, size_t const h_idx, t_color const col)

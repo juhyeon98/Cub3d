@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taeoh <taeoh@student.42.fr>                +#+  +:+       +#+        */
+/*   By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 12:14:08 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/04/09 13:08:00 by taeoh            ###   ########.fr       */
+/*   Updated: 2024/04/09 13:55:07 by juhyelee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,10 @@ int	main(int argc, char *argv[])
 		print_error(E_ARG_MANY);
 	parse(&game.map, &game.rsrc, argv[1]);
 	load_window(&game);
+	render(&game);
+	mlx_hook(game.win, KEY_EXIT, 0, exit_program, NULL);
+	mlx_hook(game.win, KEY_PRESS, 0, key_handling, &game);
+	mlx_loop(game.mlx);
 	return (0);
 }
 
@@ -35,4 +39,9 @@ void	parse(t_map *const map, t_rsrc *const rsrc, \
 	init_map(map, fd);
 	ft_putendl_fd("success load map", STDOUT_FILENO);
 	close(fd);
+}
+
+char	*get_addr(t_img const img, size_t const y, size_t const x)
+{
+	return (img.addr + (y * img.len + x * (img.bpp / 8)));
 }

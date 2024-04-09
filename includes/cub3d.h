@@ -6,7 +6,7 @@
 /*   By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 10:43:32 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/04/09 13:46:18 by juhyelee         ###   ########.fr       */
+/*   Updated: 2024/04/09 13:50:52 by juhyelee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -222,7 +222,7 @@ void	draw_texture(t_game *const game, t_ray const ray, \
 char	*get_addr(t_img const img, size_t const y, size_t const x);
 
 /* event */
-int		close(void);
+int		exit_program(void);
 int		key_handling(int keycode, t_game *const game);
 void	turn_right(t_game *const game);
 void	turn_left(t_game *const game);
