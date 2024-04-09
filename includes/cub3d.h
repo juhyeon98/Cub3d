@@ -6,7 +6,7 @@
 /*   By: taeoh <taeoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 10:43:32 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/04/09 16:53:13 by taeoh            ###   ########.fr       */
+/*   Updated: 2024/04/09 17:39:15 by taeoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 // # define HEIGHT 720
 // # define WIDTH 1280
 # define TXT_WIDTH 32
+# define  MAX_HEIGHT 10000
 
 # define ESC_KEY 53
 # define W 13
@@ -41,7 +42,7 @@
 # define FOV 0.87
 
 # define ANGLE 0.1
-# define SPEED 0.1
+# define SPEED 0.3
 # define COLLISION 0.5
 
 # define RIGHT_DIR -1

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map1.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: taeoh <taeoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 13:21:33 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/03/28 16:49:50 by juhyelee         ###   ########.fr       */
+/*   Updated: 2024/04/09 17:52:42 by taeoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,35 @@ void	init_map(t_map *const map, int const fd)
 	char	*line;
 	char	*map_str;
 	size_t	start_point;
+	size_t	index;
 
+	line = NULL;
 	map_str = NULL;
-	while (1)
+	while(1)
+	{
+		line = get_line(fd);
+		if (ft_strncmp(line, "\n", 2) != 0)
+			break ;
+		free(line);
+	}
+	if (!line)
+	{
+		map_str = line;
+		free(line);
+	}
+	index = 0;
+	while (index < MAX_HEIGHT)
 	{
 		line = get_line(fd);
 		if (!line)
 			break ;
 		map_str = merge(map_str, line);
 		free(line);
+		if (ft_strncmp(line, "\n", 2) != 0)
+			index++;
 	}
+	if (index == MAX_HEIGHT)
+		print_error(E_MAP_INVAL); // E_MAP_2BIG
 	if (!map_str)
 		print_error(E_MAP_NOTFD);
 	start_point = get_start_point(map_str);
