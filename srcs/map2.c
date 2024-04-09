@@ -6,7 +6,7 @@
 /*   By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 14:33:32 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/03/28 17:14:39 by juhyelee         ###   ########.fr       */
+/*   Updated: 2024/04/09 14:51:44 by juhyelee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,7 @@ void	check_elements(t_map const map)
 			p_one = check_player(map.map[h][w]);
 			if (map.map[h][w] != '1' && map.map[h][w] != '0' && \
 				map.map[h][w] != ' ' && !is_player(map.map[h][w]))
-			{
-				printf("%zu %zu %d\n", h, w, map.map[h][w]);
 				print_error(E_MAP_OTHEL);
-			}
 			w++;
 		}
 		h++;

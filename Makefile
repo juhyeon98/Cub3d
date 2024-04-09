@@ -6,7 +6,7 @@
 #    By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/28 11:02:51 by juhyelee          #+#    #+#              #
-#    Updated: 2024/04/09 13:56:17 by juhyelee         ###   ########.fr        #
+#    Updated: 2024/04/09 14:53:34 by juhyelee         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,6 +51,7 @@ fclean :
 	${RM} ${OBJS}
 	${RM} ${NAME}
 	${MK} ${LIBFTDIR} fclean
+	${MK} ${MLXDIR} clean
 re : fclean all
 
 ${NAME} : ${OBJS} ${LIBFT} ${MLX}
