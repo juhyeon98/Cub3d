@@ -6,7 +6,7 @@
 /*   By: taeoh <taeoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 10:43:32 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/04/10 15:03:12 by taeoh            ###   ########.fr       */
+/*   Updated: 2024/04/10 15:39:02 by taeoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,7 +163,6 @@ typedef struct s_game
 	int		f_time;
 	t_ray	ray;
 }t_game;
-
 
 void	print_error(enum e_error num);
 void	resource_error(enum e_error num);
