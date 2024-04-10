@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   event1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: taeoh <taeoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 12:48:12 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/04/09 14:14:10 by juhyelee         ###   ########.fr       */
+/*   Updated: 2024/04/10 15:28:40 by taeoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +68,13 @@ void	move_forward(t_game *const game)
 {
 	double const	diffx = game->posx + game->dirx * SPEED;
 	double const	diffy = game->posy + game->diry * SPEED;
+	double const	xflag = \
+				(-0.1) * (game->dirx < 0) + 0.1 * (game->dirx > 0);
+	double const	yflag = \
+				(-0.1) * (game->diry < 0) + 0.1 * (game->diry > 0);
 
-	if (game->map.map[(int)game->posy][(int)diffx] != '1')
+	if (game->map.map[(int)game->posy][(int)(diffx + xflag)] != '1')
 		game->posx = diffx;
-	if (game->map.map[(int)diffy][(int)game->posx] != '1')
+	if (game->map.map[(int)(diffy + yflag)][(int)game->posx] != '1')
 		game->posy = diffy;
 }

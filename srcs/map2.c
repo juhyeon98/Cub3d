@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map2.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: taeoh <taeoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 14:33:32 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/04/09 14:51:44 by juhyelee         ###   ########.fr       */
+/*   Updated: 2024/04/10 15:23:40 by taeoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	check_surround(t_map const map)
 
 	find_player(map, &py, &px);
 	copy_map(&cmap, map);
-	while (py > 1 && cmap.map[py][px] != '1')
+	while (py > 1 && cmap.map[py - 1][px] != '1')
 		py--;
 	check_around(cmap, py, px);
 	clear_map(cmap);

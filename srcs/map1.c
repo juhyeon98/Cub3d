@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map1.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: taeoh <taeoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 13:21:33 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/03/28 16:49:50 by juhyelee         ###   ########.fr       */
+/*   Updated: 2024/04/10 14:44:22 by taeoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	init_map(t_map *const map, int const fd)
 	char	*map_str;
 	size_t	start_point;
 
+	line = NULL;
 	map_str = NULL;
 	while (1)
 	{
@@ -60,8 +61,9 @@ void	get_map_size(t_map *const map, char const *str)
 			map->h++;
 		index++;
 	}
+	if (str[index - 1] != '\n')
+		map->h++;
 	map->w = 0;
-	index = 0;
 	while (*str)
 	{
 		line_len = get_line_len(str);
@@ -71,6 +73,8 @@ void	get_map_size(t_map *const map, char const *str)
 	}
 	if (map->h < 3 || map->w < 3)
 		print_error(E_MAP_INVAL);
+	if (map->h * map->w > 10000)
+		print_error(E_MAP_2BIG);
 }
 
 void	convert_map(t_map *const map, char const *str)

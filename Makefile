@@ -6,11 +6,12 @@
 #    By: taeoh <taeoh@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/28 11:02:51 by juhyelee          #+#    #+#              #
-#    Updated: 2024/04/09 15:27:04 by taeoh            ###   ########.fr        #
+#    Updated: 2024/04/10 14:38:40 by taeoh            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # export DYLD_LIBRARY_PATH=/Users/juhyelee/Cub3d/mlx
+# export DYLD_LIBRARY_PATH=/Users/taeoh/Cub3d/mlx
 
 LIBFTDIR = libft
 LIBFT = ${LIBFTDIR}/libft.a

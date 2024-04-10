@@ -6,7 +6,7 @@
 /*   By: taeoh <taeoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 11:59:12 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/04/09 15:32:29 by taeoh            ###   ########.fr       */
+/*   Updated: 2024/04/10 15:03:50 by taeoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,11 +103,13 @@ void	set_color(t_color *const color, char const *str)
 		color[index] = convert_color(str);
 		while (*str && ft_isdigit(*str))
 			str++;
+		if (index != 2 && *str != ',')
+			print_error(E_COL_FORM);
 		str++;
 		if (index != 2 && *str == '\0')
 			print_error(E_COL_LACK);
 		index++;
 	}
 	if (*str != '\0')
-		print_error(E_COL_MANY);
+		print_error(E_COL_FORM);
 }

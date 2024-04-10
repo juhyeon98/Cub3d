@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render1.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: taeoh <taeoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 10:55:33 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/04/09 14:22:06 by juhyelee         ###   ########.fr       */
+/*   Updated: 2024/04/10 14:41:20 by taeoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,18 @@
 
 void	render(t_game *game)
 {
-	t_ray	ray;
 	size_t	w_idx;
 
 	init_window(game->mlx, game->win, &game->screen, &game->rsrc);
 	w_idx = 0;
 	while (w_idx < WIDTH)
 	{
-		init_ray(*game, &ray, w_idx);
-		detech_wall(&ray, game->map);
-		set_distance(*game, &ray);
-		select_texture(&ray);
-		set_texture_index(*game, &ray);
-		draw_texture(game, ray, w_idx);
+		init_ray(*game, &game->ray, w_idx);
+		detech_wall(&game->ray, game->map);
+		set_distance(*game, &game->ray);
+		select_texture(&game->ray);
+		set_texture_index(*game, &game->ray);
+		draw_texture(game, game->ray, w_idx);
 		w_idx++;
 	}
 	mlx_put_image_to_window(game->mlx, game->win, game->screen.obj, 0, 0);
