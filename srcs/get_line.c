@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_line.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: taeoh <taeoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 10:46:59 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/03/28 17:09:33 by juhyelee         ###   ########.fr       */
+/*   Updated: 2024/04/10 15:28:50 by taeoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,11 @@ char	*get_line(int const fd)
 	while (not_contain_nl(remain))
 	{
 		buff_len = read(fd, buff, BUFF_SZ);
-		if (buff_len <= 0)
+		if (buff_len == 0 && !remain)
+			return (NULL);
+		if (buff_len == 0 && *remain)
+			break ;
+		else if ((buff_len < 0) || (buff_len == 0 && !*remain))
 		{
 			if (remain)
 				free(remain);
@@ -99,7 +103,8 @@ void	organize(char *const str)
 	len = 0;
 	while (str[len] && str[len] != '\n')
 		len++;
-	len++;
+	if (str[len] == '\n')
+		len++;
 	index = 0;
 	while (str[index + len])
 	{

@@ -6,7 +6,7 @@
 /*   By: taeoh <taeoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 11:17:13 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/04/09 15:16:35 by taeoh            ###   ########.fr       */
+/*   Updated: 2024/04/10 15:04:09 by taeoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ void	resource_error(enum e_error num)
 		ft_putendl_fd("Not contain color data", STDERR_FILENO);
 	else if (num == E_COL_LACK)
 		ft_putendl_fd("Need more color", STDERR_FILENO);
-	else if (num == E_COL_MANY)
-		ft_putendl_fd("Too many color", STDERR_FILENO);
+	else if (num == E_COL_FORM)
+		ft_putendl_fd("Wrong color form", STDERR_FILENO);
 	else if (num == E_COL_INVAL)
 		ft_putendl_fd("Invalid color", STDERR_FILENO);
 	else if (num == E_XPM_NOTFE)
@@ -62,6 +62,8 @@ void	map_error(enum e_error num)
 		ft_putendl_fd("There is other element", STDERR_FILENO);
 	else if (num == E_MAP_INVAL)
 		ft_putendl_fd("Invalid map", STDERR_FILENO);
+	else if (num == E_MAP_2BIG)
+		ft_putendl_fd("Map is too big", STDERR_FILENO);
 	else if (num == E_MAP_2PLAYER)
 		ft_putendl_fd("Too many player in map", STDERR_FILENO);
 	else if (num == E_MAP_NOPLAYER)

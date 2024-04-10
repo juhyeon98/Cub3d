@@ -6,7 +6,7 @@
 /*   By: taeoh <taeoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 10:43:32 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/04/09 17:39:15 by taeoh            ###   ########.fr       */
+/*   Updated: 2024/04/10 15:03:12 by taeoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,8 @@
 
 # define BUFF_SZ 31
 
-# define HEIGHT 1080
-# define WIDTH 1920
-// # define HEIGHT 720
-// # define WIDTH 1280
+# define HEIGHT 720
+# define WIDTH 1280
 # define TXT_WIDTH 32
 # define  MAX_HEIGHT 10000
 
@@ -66,13 +64,14 @@ enum e_error
 	E_TEXT_MANY,
 	E_COL_NOTFD,
 	E_COL_LACK,
-	E_COL_MANY,
+	E_COL_FORM,
 	E_COL_INVAL,
 	E_XPM_NOTFE,
 	E_XPM_FAIL,
 	E_MAP_NOTFD,
 	E_MAP_OTHEL,
 	E_MAP_INVAL,
+	E_MAP_2BIG,
 	E_MAP_2PLAYER,
 	E_MAP_NOPLAYER,
 	E_MLX
