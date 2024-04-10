@@ -6,7 +6,7 @@
 /*   By: taeoh <taeoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 13:01:52 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/04/10 14:36:57 by taeoh            ###   ########.fr       */
+/*   Updated: 2024/04/10 15:45:06 by taeoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ void	move_back(t_game *const game)
 	double const	diffx = game->posx - game->dirx * SPEED;
 	double const	diffy = game->posy - game->diry * SPEED;
 	double const	xflag = \
-				(-0.1) * (game->dirx < 0) + 0.1 * (game->dirx > 0);
+				(-COLL) * (game->dirx < 0) + COLL * (game->dirx > 0);
 	double const	yflag = \
-				(-0.1) * (game->diry < 0) + 0.1 * (game->diry > 0);
+				(-COLL) * (game->diry < 0) + COLL * (game->diry > 0);
 
 	if (game->map.map[(int)game->posy][(int)(diffx - xflag)] != '1')
 		game->posx = diffx;
@@ -32,9 +32,9 @@ void	move_right(t_game *const game)
 	double const	diffx = game->posx - game->diry * SPEED;
 	double const	diffy = game->posy + game->dirx * SPEED;
 	double const	xflag = \
-				(-0.1) * (game->dirx < 0) + 0.1 * (game->dirx > 0);
+				(-COLL) * (game->dirx < 0) + COLL * (game->dirx > 0);
 	double const	yflag = \
-				(-0.1) * (game->diry < 0) + 0.1 * (game->diry > 0);
+				(-COLL) * (game->diry < 0) + COLL * (game->diry > 0);
 
 	if (game->map.map[(int)game->posy][(int)(diffx - yflag)] != '1')
 		game->posx = diffx;
@@ -47,9 +47,9 @@ void	move_left(t_game *const game)
 	double const	diffx = game->posx + game->diry * SPEED;
 	double const	diffy = game->posy - game->dirx * SPEED;
 	double const	xflag = \
-				(-0.1) * (game->dirx < 0) + 0.1 * (game->dirx > 0);
+				(-COLL) * (game->dirx < 0) + COLL * (game->dirx > 0);
 	double const	yflag = \
-				(-0.1) * (game->diry < 0) + 0.1 * (game->diry > 0);
+				(-COLL) * (game->diry < 0) + COLL * (game->diry > 0);
 
 	if (game->map.map[(int)game->posy][(int)(diffx + yflag)] != '1')
 		game->posx = diffx;

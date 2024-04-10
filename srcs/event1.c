@@ -6,7 +6,7 @@
 /*   By: taeoh <taeoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 12:48:12 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/04/10 15:28:40 by taeoh            ###   ########.fr       */
+/*   Updated: 2024/04/10 15:43:51 by taeoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,9 +69,9 @@ void	move_forward(t_game *const game)
 	double const	diffx = game->posx + game->dirx * SPEED;
 	double const	diffy = game->posy + game->diry * SPEED;
 	double const	xflag = \
-				(-0.1) * (game->dirx < 0) + 0.1 * (game->dirx > 0);
+				(-COLL) * (game->dirx < 0) + COLL * (game->dirx > 0);
 	double const	yflag = \
-				(-0.1) * (game->diry < 0) + 0.1 * (game->diry > 0);
+				(-COLL) * (game->diry < 0) + COLL * (game->diry > 0);
 
 	if (game->map.map[(int)game->posy][(int)(diffx + xflag)] != '1')
 		game->posx = diffx;

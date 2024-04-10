@@ -6,7 +6,7 @@
 /*   By: taeoh <taeoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 10:43:32 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/04/10 15:41:17 by taeoh            ###   ########.fr       */
+/*   Updated: 2024/04/10 15:46:26 by taeoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@
 
 # define ANGLE 0.1
 # define SPEED 0.3
-# define COLLISION 0.5
+# define COLL 0.1
 
 # define RIGHT_DIR -1
 # define LEFT_DIR 1
