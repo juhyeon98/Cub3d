@@ -76,16 +76,4 @@ void	move_left(t_game *const game)
 	&& (game->map.map[(int)(m.righty - m.collx)][(int)m.rightx] != '1') \
 	&& (game->map.map[(int)(m.diffy - m.collx)][(int)game->posx] != '1'))
 		game->posy = m.diffy;
-		
-	double const	diffx = game->posx + game->diry * SPEED;
-	double const	diffy = game->posy - game->dirx * SPEED;
-	double const	xflag = \
-				(-COLL) * (game->dirx < 0) + COLL * (game->dirx > 0);
-	double const	yflag = \
-				(-COLL) * (game->diry < 0) + COLL * (game->diry > 0);
-
-	if (game->map.map[(int)game->posy][(int)(diffx + yflag)] != '1')
-		game->posx = diffx;
-	if (game->map.map[(int)(diffy - xflag)][(int)game->posx] != '1')
-		game->posy = diffy;
 }
