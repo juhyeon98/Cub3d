@@ -6,7 +6,7 @@
 /*   By: taeoh <taeoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 10:43:32 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/04/10 15:39:02 by taeoh            ###   ########.fr       */
+/*   Updated: 2024/04/12 12:31:42 by taeoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 # define HEIGHT 720
 # define WIDTH 1280
 # define TXT_WIDTH 32
-# define  MAX_HEIGHT 10000
+# define MAX_HEIGHT 10000
 
 # define ESC_KEY 53
 # define W 13
@@ -41,7 +41,7 @@
 
 # define ANGLE 0.1
 # define SPEED 0.3
-# define COLLISION 0.5
+# define COLL 0.1
 
 # define RIGHT_DIR -1
 # define LEFT_DIR 1
@@ -163,6 +163,18 @@ typedef struct s_game
 	int		f_time;
 	t_ray	ray;
 }t_game;
+
+typedef struct s_move
+{
+	double	diffx;
+	double	diffy;
+	double	collx;
+	double	colly;
+	double	leftx;
+	double	lefty;
+	double	rightx;
+	double	righty;
+}t_move;
 
 void	print_error(enum e_error num);
 void	resource_error(enum e_error num);
