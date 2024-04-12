@@ -6,7 +6,7 @@
 /*   By: taeoh <taeoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 10:43:32 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/04/12 12:31:42 by taeoh            ###   ########.fr       */
+/*   Updated: 2024/04/12 12:56:44 by taeoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@
 # define KEY_PRESS 2
 # define FOV 0.87
 
-# define ANGLE 0.1
-# define SPEED 0.3
+# define ANGLE 0.05
+# define SPEED 0.1
 # define COLL 0.1
 
 # define RIGHT_DIR -1

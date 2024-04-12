@@ -6,7 +6,7 @@
 /*   By: taeoh <taeoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 12:48:12 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/04/12 12:16:30 by taeoh            ###   ########.fr       */
+/*   Updated: 2024/04/12 12:57:07 by taeoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,8 @@ void	move_forward(t_game *const game)
 
 	m.diffx = game->posx + game->dirx * SPEED;
 	m.diffy = game->posy + game->diry * SPEED;
-	m.collx = (-SPEED) * (game->dirx < 0) + COLL * (game->dirx > 0);
-	m.colly = (-SPEED) * (game->diry < 0) + COLL * (game->diry > 0);
+	m.collx = (-SPEED) * (game->dirx < 0) + SPEED * (game->dirx > 0);
+	m.colly = (-SPEED) * (game->diry < 0) + SPEED * (game->diry > 0);
 	m.leftx = game->posx + game->diry * COLL + game->dirx * SPEED;
 	m.lefty = game->posy - game->dirx * COLL + game->diry * SPEED;
 	m.rightx = game->posx - game->diry * COLL + game->dirx * SPEED;

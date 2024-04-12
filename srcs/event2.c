@@ -6,7 +6,7 @@
 /*   By: taeoh <taeoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 13:01:52 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/04/12 12:20:49 by taeoh            ###   ########.fr       */
+/*   Updated: 2024/04/12 12:57:11 by taeoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ void	move_back(t_game *const game)
 
 	m.diffx = game->posx - game->dirx * SPEED;
 	m.diffy = game->posy - game->diry * SPEED;
-	m.collx = (-SPEED) * (game->dirx < 0) + COLL * (game->dirx > 0);
-	m.colly = (-SPEED) * (game->diry < 0) + COLL * (game->diry > 0);
+	m.collx = (-SPEED) * (game->dirx < 0) + SPEED * (game->dirx > 0);
+	m.colly = (-SPEED) * (game->diry < 0) + SPEED * (game->diry > 0);
 	m.leftx = game->posx + game->diry * COLL - game->dirx * SPEED;
 	m.lefty = game->posy - game->dirx * COLL - game->diry * SPEED;
 	m.rightx = game->posx - game->diry * COLL - game->dirx * SPEED;
@@ -40,8 +40,8 @@ void	move_right(t_game *const game)
 
 	m.diffx = game->posx - game->diry * SPEED;
 	m.diffy = game->posy + game->dirx * SPEED;
-	m.collx = (-SPEED) * (game->dirx < 0) + COLL * (game->dirx > 0);
-	m.colly = (-SPEED) * (game->diry < 0) + COLL * (game->diry > 0);
+	m.collx = (-SPEED) * (game->dirx < 0) + SPEED * (game->dirx > 0);
+	m.colly = (-SPEED) * (game->diry < 0) + SPEED * (game->diry > 0);
 	m.leftx = game->posx - game->dirx * COLL - game->diry * SPEED;
 	m.lefty = game->posy + game->diry * COLL + game->dirx * SPEED;
 	m.rightx = game->posx + game->dirx * COLL - game->diry * SPEED;
@@ -62,8 +62,8 @@ void	move_left(t_game *const game)
 
 	m.diffx = game->posx + game->diry * SPEED;
 	m.diffy = game->posy - game->dirx * SPEED;
-	m.collx = (-SPEED) * (game->dirx < 0) + COLL * (game->dirx > 0);
-	m.colly = (-SPEED) * (game->diry < 0) + COLL * (game->diry > 0);
+	m.collx = (-SPEED) * (game->dirx < 0) + SPEED * (game->dirx > 0);
+	m.colly = (-SPEED) * (game->diry < 0) + SPEED * (game->diry > 0);
 	m.leftx = game->posx + game->dirx * COLL + game->diry * SPEED;
 	m.lefty = game->posy - game->diry * COLL - game->dirx * SPEED;
 	m.rightx = game->posx + game->dirx * COLL + game->diry * SPEED;
