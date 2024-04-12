@@ -6,7 +6,7 @@
 /*   By: taeoh <taeoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 13:07:29 by taeoh             #+#    #+#             */
-/*   Updated: 2024/04/10 15:45:52 by taeoh            ###   ########.fr       */
+/*   Updated: 2024/04/12 12:26:00 by taeoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,8 @@ void	set_position(t_game *game, char **map)
 			if (map[y][x] == 'N' || map[y][x] == 'S' \
 				|| map[y][x] == 'E' || map[y][x] == 'W')
 			{
-				game->posx = x;
-				game->posy = y;
+				game->posx = x + 0.5;
+				game->posy = y + 0.5;
 				game->dirx = -1 * (map[y][x] == 'W') + (map[y][x] == 'E');
 				game->diry = -1 * (map[y][x] == 'N') + (map[y][x] == 'S');
 				game->planx = -1 * game->diry * FOV;
