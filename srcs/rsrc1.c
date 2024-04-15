@@ -6,7 +6,7 @@
 /*   By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 11:59:12 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/04/15 12:37:18 by juhyelee         ###   ########.fr       */
+/*   Updated: 2024/04/15 12:42:55 by juhyelee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,32 +14,6 @@
 
 void	init_resource(t_rsrc *const rsrc, int const fd)
 {
-	// char	*line;
-	// char	to_check;
-	// int		finished;
-	// t_type	type;
-
-	// finished = 0;
-	// while (finished < 6)
-	// {
-	// 	line = get_line(fd);
-	// 	if (!line)
-	// 		print_error(E_RSRC_LACK);
-	// 	line[ft_strlen(line) - 1] = '\0';
-	// 	type = get_type(line);
-	// 	if (type == T_NO)
-	// 		rsrc->textures[type] = set_texture(line + 2, type, &to_check);
-	// 	if (type >= T_NO && type <= T_EA)
-	// 		rsrc->textures[type] = set_texture(line + 2, type, &to_check);
-	// 	else if (type == T_FL || type == T_CL)
-	// 		set_color(rsrc->colors[type - 4], line + 1);
-	// 	free(line);
-	// }
-	// rsrc->cl_color = (rsrc->colors[0][0] << 16) | (rsrc->colors[0][1] << 8);
-	// rsrc->cl_color = rsrc->cl_color | rsrc->colors[0][2];
-	// rsrc->fl_color = (rsrc->colors[1][0] << 16) | (rsrc->colors[1][1] << 8);
-	// rsrc->fl_color = rsrc->fl_color | rsrc->colors[1][2];
-
 	unsigned char	to_check;
 	char			*line;
 	t_type			type;
