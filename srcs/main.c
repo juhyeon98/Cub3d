@@ -3,14 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: taeoh <taeoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 12:14:08 by juhyelee          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2024/04/15 12:47:21 by taeoh            ###   ########.fr       */
-=======
-/*   Updated: 2024/04/15 12:42:04 by juhyelee         ###   ########.fr       */
->>>>>>> 5582a8d994841af7a8cf8bf5aab05f9d706c8a9a
+/*   Updated: 2024/04/15 13:21:25 by taeoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +35,7 @@ void	parse(t_map *const map, t_rsrc *const rsrc, \
 	int const	fd = open_file(file_name);
 
 	init_resource(rsrc, fd);
-	ft_putendl_fd("success load resource", STDOUT_FILENO);
 	init_map(map, fd);
-	ft_putendl_fd("success load map", STDOUT_FILENO);
 	close(fd);
 }
 
