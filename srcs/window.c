@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   window.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taeoh <taeoh@student.42.fr>                +#+  +:+       +#+        */
+/*   By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 13:07:29 by taeoh             #+#    #+#             */
-/*   Updated: 2024/04/12 12:26:00 by taeoh            ###   ########.fr       */
+/*   Updated: 2024/04/15 12:41:16 by juhyelee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	init_window(void *mlx, void *win, t_img *img, t_rsrc *rsrc)
 	{
 		while (++x < WIDTH)
 			*(unsigned int *)(img->addr + y * img->len + (img->bpp / 8) * x) \
-				= rsrc->fl_color;
+				= rsrc->colors[1];
 		x = -1;
 	}
 	x = -1;
@@ -33,7 +33,7 @@ void	init_window(void *mlx, void *win, t_img *img, t_rsrc *rsrc)
 	{
 		while (++x < WIDTH)
 			*(unsigned int *)(img->addr + y * img->len + (img->bpp / 8) * x) \
-				= rsrc->cl_color;
+				= rsrc->colors[0];
 		x = -1;
 	}
 }
