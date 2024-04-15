@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taeoh <taeoh@student.42.fr>                +#+  +:+       +#+        */
+/*   By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 11:17:13 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/04/10 15:04:09 by taeoh            ###   ########.fr       */
+/*   Updated: 2024/04/15 12:43:54 by juhyelee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ void	resource_error(enum e_error num)
 {
 	if (num == E_RSRC_LACK)
 		ft_putendl_fd("Need more map information", STDERR_FILENO);
+	else if (num == E_RSRC_DUP)
+		ft_putendl_fd("Duplicated resource", STDERR_FILENO);
 	else if (num == E_TYPE_INVAL)
 		ft_putendl_fd("Invalid type", STDERR_FILENO);
 	else if (num == E_TEXT_NOTFD)
