@@ -3,10 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taeoh <taeoh@student.42.fr>                +#+  +:+       +#+        */
+/*   By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 10:43:32 by juhyelee          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2024/04/15 12:47:07 by taeoh            ###   ########.fr       */
+=======
+/*   Updated: 2024/04/15 12:40:52 by juhyelee         ###   ########.fr       */
+>>>>>>> 5582a8d994841af7a8cf8bf5aab05f9d706c8a9a
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +31,8 @@
 # define WIDTH 1280
 # define TXT_WIDTH 32
 # define MAX_HEIGHT 10000
+
+# define FL_RSRCS 0x3F
 
 # define ESC_KEY 53
 # define W 13
@@ -59,6 +65,7 @@ enum e_error
 	E_FILE_INVAL,
 	E_FILE_FDERR,
 	E_RSRC_LACK,
+	E_RSRC_DUP,
 	E_TYPE_INVAL,
 	E_TEXT_NOTFD,
 	E_TEXT_MANY,
@@ -94,9 +101,7 @@ typedef unsigned int	t_color;
 typedef struct s_resource
 {
 	char		*textures[4];
-	t_color		colors[2][3];
-	t_color		fl_color;
-	t_color		cl_color;
+	t_color		colors[2];
 }t_rsrc;
 
 typedef struct s_map
@@ -202,7 +207,7 @@ void	init_resource(t_rsrc *const rsrc, int const fd);
 t_type	get_type(char const *str);
 int		is_white(char const ch);
 char	*set_texture(char const *str);
-void	set_color(t_color *const color, char const *str);
+t_color	set_color(char const *str);
 t_color	convert_color(char const *const str);
 void	clear_resource(t_rsrc *const rsrc);
 
