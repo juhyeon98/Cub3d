@@ -6,7 +6,7 @@
 /*   By: taeoh <taeoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 13:21:33 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/04/10 14:44:22 by taeoh            ###   ########.fr       */
+/*   Updated: 2024/04/15 11:54:31 by taeoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,19 +54,18 @@ void	get_map_size(t_map *const map, char const *str)
 	size_t	line_len;
 
 	map->h = 0;
-	index = 0;
-	while (str[index])
-	{
+	index = -1;
+	while (str[++index])
 		if (str[index] == '\n')
 			map->h++;
-		index++;
-	}
 	if (str[index - 1] != '\n')
 		map->h++;
 	map->w = 0;
 	while (*str)
 	{
 		line_len = get_line_len(str);
+		if (line_len == 0)
+			print_error(E_MAP_EMPL);
 		if (map->w < line_len)
 			map->w = line_len;
 		str += (line_len + 1);

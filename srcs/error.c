@@ -6,7 +6,7 @@
 /*   By: taeoh <taeoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 11:17:13 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/04/10 15:04:09 by taeoh            ###   ########.fr       */
+/*   Updated: 2024/04/15 11:55:34 by taeoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ void	map_error(enum e_error num)
 		ft_putendl_fd("There is other element", STDERR_FILENO);
 	else if (num == E_MAP_INVAL)
 		ft_putendl_fd("Invalid map", STDERR_FILENO);
+	else if (num == E_MAP_EMPL)
+		ft_putendl_fd("No empty line is permitted inside map", STDERR_FILENO);
 	else if (num == E_MAP_2BIG)
 		ft_putendl_fd("Map is too big", STDERR_FILENO);
 	else if (num == E_MAP_2PLAYER)

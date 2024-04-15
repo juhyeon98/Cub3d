@@ -6,7 +6,7 @@
 /*   By: taeoh <taeoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 10:43:32 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/04/12 12:56:44 by taeoh            ###   ########.fr       */
+/*   Updated: 2024/04/15 12:47:07 by taeoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ enum e_error
 	E_MAP_NOTFD,
 	E_MAP_OTHEL,
 	E_MAP_INVAL,
+	E_MAP_EMPL,
 	E_MAP_2BIG,
 	E_MAP_2PLAYER,
 	E_MAP_NOPLAYER,
@@ -214,7 +215,7 @@ void	check_elements(t_map const map);
 int		is_player(char const el);
 int		check_player(char const el);
 void	check_surround(t_map const map);
-void	find_player(t_map const map, size_t *const y, size_t *const x);
+int		check_visited(t_map const map, size_t *y, size_t *x);
 void	copy_map(t_map *const dst, t_map const org);
 void	clear_map(t_map const map);
 void	check_around(t_map const map, size_t const y, size_t const x);

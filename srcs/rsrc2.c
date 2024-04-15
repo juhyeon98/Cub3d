@@ -6,7 +6,7 @@
 /*   By: taeoh <taeoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 17:04:10 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/04/10 15:28:09 by taeoh            ###   ########.fr       */
+/*   Updated: 2024/04/15 12:24:29 by taeoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	check_down(t_map const map, size_t const y, size_t const x)
 		print_error(E_MAP_INVAL);
 	else if (map.map[y + 1][x] == ' ')
 		print_error(E_MAP_INVAL);
-	return (map.map[y + 1][x] == '0');
+	return (map.map[y + 1][x] == '0' || is_player(map.map[y + 1][x]));
 }
 
 int	check_right(t_map const map, size_t const y, size_t const x)
@@ -50,7 +50,7 @@ int	check_right(t_map const map, size_t const y, size_t const x)
 		print_error(E_MAP_INVAL);
 	else if (map.map[y][x + 1] == ' ')
 		print_error(E_MAP_INVAL);
-	return (map.map[y][x + 1] == '0');
+	return (map.map[y][x + 1] == '0' || is_player(map.map[y][x + 1]));
 }
 
 int	open_file(char const *const file_name)
