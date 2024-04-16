@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map2.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taeoh <taeoh@student.42.fr>                +#+  +:+       +#+        */
+/*   By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 14:33:32 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/04/15 12:46:24 by taeoh            ###   ########.fr       */
+/*   Updated: 2024/04/16 15:40:54 by juhyelee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ void	check_elements(t_map const map)
 		{
 			p_one = check_player(map.map[h][w]);
 			if (map.map[h][w] != '1' && map.map[h][w] != '0' && \
-				map.map[h][w] != ' ' && !is_player(map.map[h][w]))
+				map.map[h][w] != ' ' && map.map[h][w] != 'D' && \
+				!is_player(map.map[h][w]))
 				print_error(E_MAP_OTHEL);
 			w++;
 		}
@@ -65,7 +66,8 @@ int	check_visited(t_map const map, size_t *y, size_t *x)
 		w = 0;
 		while (w < map.w)
 		{
-			if (map.map[h][w] == '0' || is_player(map.map[h][w]))
+			if (map.map[h][w] == '0' || map.map[h][w] == 'D' || \
+				is_player(map.map[h][w]))
 			{
 				*x = w;
 				*y = h;
