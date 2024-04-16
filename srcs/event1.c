@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   event1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taeoh <taeoh@student.42.fr>                +#+  +:+       +#+        */
+/*   By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 12:48:12 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/04/12 12:57:07 by taeoh            ###   ########.fr       */
+/*   Updated: 2024/04/16 16:58:54 by juhyelee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,12 +76,18 @@ void	move_forward(t_game *const game)
 	m.lefty = game->posy - game->dirx * COLL + game->diry * SPEED;
 	m.rightx = game->posx - game->diry * COLL + game->dirx * SPEED;
 	m.righty = game->posy + game->dirx * COLL + game->diry * SPEED;
-	if ((game->map.map[(int)m.lefty][(int)(m.leftx + m.collx)] != '1') \
-	&& (game->map.map[(int)m.righty][(int)(m.rightx + m.collx)] != '1' \
-	&& (game->map.map[(int)game->posy][(int)(m.diffx + m.collx)] != '1')))
+	if (game->map.map[(int)m.lefty][(int)(m.leftx + m.collx)] != '1' \
+	&& game->map.map[(int)m.righty][(int)(m.rightx + m.collx)] != '1' \
+	&& game->map.map[(int)game->posy][(int)(m.diffx + m.collx)] != '1' \
+	&& game->map.map[(int)m.lefty][(int)(m.leftx + m.collx)] != 'D' \
+	&& game->map.map[(int)m.righty][(int)(m.rightx + m.collx)] != 'D' \
+	&& game->map.map[(int)game->posy][(int)(m.diffx + m.collx)] != 'D')
 		game->posx = m.diffx;
-	if ((game->map.map[(int)(m.lefty + m.colly)][(int)m.leftx] != '1') \
-	&& (game->map.map[(int)(m.righty + m.colly)][(int)m.rightx] != '1') \
-	&& (game->map.map[(int)(m.diffy + m.colly)][(int)game->posx] != '1'))
+	if (game->map.map[(int)(m.lefty + m.colly)][(int)m.leftx] != '1' \
+	&& game->map.map[(int)(m.righty + m.colly)][(int)m.rightx] != '1' \
+	&& game->map.map[(int)(m.diffy + m.colly)][(int)game->posx] != '1' \
+	&& game->map.map[(int)(m.lefty + m.colly)][(int)m.leftx] != 'D' \
+	&& game->map.map[(int)(m.righty + m.colly)][(int)m.rightx] != 'D' \
+	&& game->map.map[(int)(m.diffy + m.colly)][(int)game->posx] != 'D')
 		game->posy = m.diffy;
 }
