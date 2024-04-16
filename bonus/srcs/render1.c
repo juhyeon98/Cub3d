@@ -6,7 +6,7 @@
 /*   By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 10:55:33 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/04/16 16:09:34 by juhyelee         ###   ########.fr       */
+/*   Updated: 2024/04/16 18:49:06 by juhyelee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	render(t_game *game)
 		w_idx++;
 	}
 	mlx_put_image_to_window(game->mlx, game->win, game->screen.obj, 0, 0);
+	put_minimap(game);
 }
 
 void	set_back(t_img *const img, size_t const h_idx, t_color const col)

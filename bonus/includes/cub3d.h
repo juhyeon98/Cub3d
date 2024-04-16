@@ -6,7 +6,7 @@
 /*   By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 10:43:32 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/04/16 18:38:32 by juhyelee         ###   ########.fr       */
+/*   Updated: 2024/04/16 18:48:43 by juhyelee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,6 +163,13 @@ typedef struct s_game
 	t_img	textures[4];
 	t_img	door;
 
+	t_img	minimap;
+	int		mmap_size;
+	int		mmap_pos;
+	double	mmap_grid;
+	double	mmap_pdot;
+	t_color	map_opacity;
+
 	void	*mlx;
 	void	*win;
 
@@ -265,5 +272,9 @@ void	move_forward(t_game *const game);
 void	move_back(t_game *const game);
 void	move_right(t_game *const game);
 void	move_left(t_game *const game);
+
+int		draw_player(t_game *const game, int x, int y);
+void	draw_minimap(t_game *const game, int x, int y);
+void	put_minimap(t_game *const game);
 
 #endif

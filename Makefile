@@ -6,7 +6,7 @@
 #    By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/28 11:02:51 by juhyelee          #+#    #+#              #
-#    Updated: 2024/04/16 18:41:25 by juhyelee         ###   ########.fr        #
+#    Updated: 2024/04/16 18:47:54 by juhyelee         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,6 +47,7 @@ BNS_SRCS	= ${BNS_SDIR}/main.c \
 			  ${BNS_SDIR}/window.c \
 			  ${BNS_SDIR}/render1.c \
 			  ${BNS_SDIR}/render2.c \
+			  ${BNS_SDIR}/minimap.c \
 			  ${BNS_SDIR}/event1.c \
 			  ${BNS_SDIR}/event2.c
 BNS_OBJS	= ${BNS_SRCS:.c=.o}
