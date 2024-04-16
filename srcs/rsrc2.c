@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rsrc2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taeoh <taeoh@student.42.fr>                +#+  +:+       +#+        */
+/*   By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 17:04:10 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/04/15 12:24:29 by taeoh            ###   ########.fr       */
+/*   Updated: 2024/04/16 14:24:51 by juhyelee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ t_color	convert_color(char const *str)
 	col_str = ft_itoa(color);
 	if (!col_str)
 		print_error(E_ALLOC);
-	if (ft_strncmp(str, col_str, ft_strlen(col_str)) != 0)
+	if (ft_strncmp(str, col_str, ft_strlen(str)) != 0 && \
+		ft_strncmp(str, col_str, ft_strlen(str)) != ',')
 		print_error(E_COL_INVAL);
 	free(col_str);
 	return (color);
