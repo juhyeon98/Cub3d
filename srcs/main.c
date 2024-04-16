@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taeoh <taeoh@student.42.fr>                +#+  +:+       +#+        */
+/*   By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 12:14:08 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/04/15 13:21:25 by taeoh            ###   ########.fr       */
+/*   Updated: 2024/04/16 17:24:49 by juhyelee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int	main(int argc, char *argv[])
 	render(&game);
 	mlx_hook(game.win, KEY_EXIT, 0, exit_program, NULL);
 	mlx_hook(game.win, KEY_PRESS, 0, key_handling, &game);
+	mlx_key_hook(game.win, door_handling, &game);
 	mlx_loop(game.mlx);
 	exit(0);
 }

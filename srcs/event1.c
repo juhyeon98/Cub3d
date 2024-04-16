@@ -6,7 +6,7 @@
 /*   By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 12:48:12 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/04/16 16:58:54 by juhyelee         ###   ########.fr       */
+/*   Updated: 2024/04/16 17:56:36 by juhyelee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,24 @@ int	key_handling(int keycode, t_game *const game)
 		move_right(game);
 	else if (keycode == A)
 		move_left(game);
+	render(game);
+	return (0);
+}
+
+int	door_handling(int keycode, t_game *const game)
+{
+	int	x;
+	int	y;
+
+	if (keycode == 14)
+	{
+		x = game->posx + game->dirx;
+		y = game->posy + game->diry;
+		if (game->map.map[y][x] == 'D')
+			game->map.map[y][x] = 'O';
+		else if (game->map.map[y][x] == 'O')
+			game->map.map[y][x] = 'D';
+	}
 	render(game);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 10:43:32 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/04/16 16:54:42 by juhyelee         ###   ########.fr       */
+/*   Updated: 2024/04/16 17:31:05 by juhyelee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,9 @@
 # define RIGHT 124
 # define KEY_EXIT 17
 # define KEY_PRESS 2
-# define FOV 0.87
+# define KEY_
 
+# define FOV 0.87
 # define ANGLE 0.05
 # define SPEED 0.1
 # define COLL 0.1
@@ -256,6 +257,8 @@ char	*get_addr(t_img const img, size_t const y, size_t const x);
 /* event */
 int		exit_program(void);
 int		key_handling(int keycode, t_game *const game);
+int		door_handling(int keycode, t_game *const game);
+int		is_close(t_game *const game, int *const y, int *const x);
 void	turn_right(t_game *const game);
 void	turn_left(t_game *const game);
 void	move_forward(t_game *const game);
