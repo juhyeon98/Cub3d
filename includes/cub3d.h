@@ -6,7 +6,7 @@
 /*   By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 10:43:32 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/04/16 16:11:03 by juhyelee         ###   ########.fr       */
+/*   Updated: 2024/04/16 16:45:41 by juhyelee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,6 +145,14 @@ typedef struct s_ray
 	size_t	t_idx;
 }t_ray;
 
+typedef struct s_draw
+{
+	int		last_idx;
+	int		draw_idx;
+	char	*screen;
+	char	*texture;
+}t_draw;
+
 typedef struct s_game
 {
 	t_rsrc	rsrc;
@@ -242,6 +250,7 @@ void	select_texture(t_ray *const ray);
 void	set_texture_index(t_game const game, t_ray *const ray);
 void	draw_texture(t_game *const game, t_ray const ray, \
 					size_t const w_idx);
+
 char	*get_addr(t_img const img, size_t const y, size_t const x);
 
 /* event */
