@@ -6,7 +6,7 @@
 #    By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/28 11:02:51 by juhyelee          #+#    #+#              #
-#    Updated: 2024/04/16 18:14:19 by juhyelee         ###   ########.fr        #
+#    Updated: 2024/04/16 18:41:25 by juhyelee         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,11 +34,27 @@ MAN_SRCS	= ${MAN_SDIR}/main.c \
 MAN_OBJS	= ${MAN_SRCS:.c=.o}
 
 BNS_DIR		= bonus
+BNS_INCS	= ${BNS_DIR}/includes
+BNS_SDIR	= ${BNS_DIR}/srcs
+BNS_SRCS	= ${BNS_SDIR}/main.c \
+			  ${BNS_SDIR}/error.c \
+			  ${BNS_SDIR}/get_line.c \
+			  ${BNS_SDIR}/rsrc1.c \
+			  ${BNS_SDIR}/rsrc2.c \
+			  ${BNS_SDIR}/map1.c \
+			  ${BNS_SDIR}/map2.c \
+			  ${BNS_SDIR}/map3.c \
+			  ${BNS_SDIR}/window.c \
+			  ${BNS_SDIR}/render1.c \
+			  ${BNS_SDIR}/render2.c \
+			  ${BNS_SDIR}/event1.c \
+			  ${BNS_SDIR}/event2.c
+BNS_OBJS	= ${BNS_SRCS:.c=.o}
 
 MK			= make -C
 RM			= rm -rf
 CC			= cc
-CFLAG		= -Wall -Wextra -Werror -I${INCS}
+CFLAG		= -Wall -Wextra -Werror
 LFLAG		= -Llibft -lft -Lmlx -lmlx -framework OpenGL -framework AppKit
 
 NAME		= cub3D
@@ -49,19 +65,20 @@ BONUS		= cub3D_bonus
 all			: ${NAME}
 bonus		: ${BONUS}
 clean		:
-	${RM} ${OBJS}
+	${RM} ${MAN_OBJS}
+	${RM} ${BNS_OBJS}
 	${MK} ${LIBFTDIR} clean
-fclean		:
-	${RM} ${OBJS}
+fclean		: clean
 	${RM} ${NAME}
+	${RM} ${BONUS}
 	${MK} ${LIBFTDIR} fclean
 	${MK} ${MLXDIR} clean
 re			: fclean all
 
 ${NAME}		: ${MAN_OBJS} ${LIBFT} ${MLX}
-	${CC} ${LFLAG} $^ -o $@
-${BONUS}	: ${MAN_OBJS} ${LIBFT} ${MLX}
-	${CC} ${LFLAG} $^ -o $@
+	${CC} ${LFLAG} -I${MAN_INCS} $^ -o $@
+${BONUS}	: ${BNS_OBJS} ${LIBFT} ${MLX}
+	${CC} ${LFLAG} -I${BNS_INCS} $^ -o $@
 ${LIBFT}	:
 	${MK} ${LIBFTDIR}
 $(MLX)		:

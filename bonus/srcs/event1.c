@@ -6,7 +6,7 @@
 /*   By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 12:48:12 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/04/16 18:28:40 by juhyelee         ###   ########.fr       */
+/*   Updated: 2024/04/16 17:56:36 by juhyelee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,24 @@ int	key_handling(int keycode, t_game *const game)
 		move_right(game);
 	else if (keycode == A)
 		move_left(game);
+	render(game);
+	return (0);
+}
+
+int	door_handling(int keycode, t_game *const game)
+{
+	int	x;
+	int	y;
+
+	if (keycode == 14)
+	{
+		x = game->posx + game->dirx;
+		y = game->posy + game->diry;
+		if (game->map.map[y][x] == 'D')
+			game->map.map[y][x] = 'O';
+		else if (game->map.map[y][x] == 'O')
+			game->map.map[y][x] = 'D';
+	}
 	render(game);
 	return (0);
 }
@@ -78,10 +96,16 @@ void	move_forward(t_game *const game)
 	m.righty = game->posy + game->dirx * COLL + game->diry * SPEED;
 	if (game->map.map[(int)m.lefty][(int)(m.leftx + m.collx)] != '1' \
 	&& game->map.map[(int)m.righty][(int)(m.rightx + m.collx)] != '1' \
-	&& game->map.map[(int)game->posy][(int)(m.diffx + m.collx)] != '1')
+	&& game->map.map[(int)game->posy][(int)(m.diffx + m.collx)] != '1' \
+	&& game->map.map[(int)m.lefty][(int)(m.leftx + m.collx)] != 'D' \
+	&& game->map.map[(int)m.righty][(int)(m.rightx + m.collx)] != 'D' \
+	&& game->map.map[(int)game->posy][(int)(m.diffx + m.collx)] != 'D')
 		game->posx = m.diffx;
 	if (game->map.map[(int)(m.lefty + m.colly)][(int)m.leftx] != '1' \
 	&& game->map.map[(int)(m.righty + m.colly)][(int)m.rightx] != '1' \
-	&& game->map.map[(int)(m.diffy + m.colly)][(int)game->posx] != '1')
+	&& game->map.map[(int)(m.diffy + m.colly)][(int)game->posx] != '1' \
+	&& game->map.map[(int)(m.lefty + m.colly)][(int)m.leftx] != 'D' \
+	&& game->map.map[(int)(m.righty + m.colly)][(int)m.rightx] != 'D' \
+	&& game->map.map[(int)(m.diffy + m.colly)][(int)game->posx] != 'D')
 		game->posy = m.diffy;
 }
