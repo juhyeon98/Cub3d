@@ -6,7 +6,7 @@
 /*   By: taeoh <taeoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 10:43:32 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/04/15 12:58:51 by taeoh            ###   ########.fr       */
+/*   Updated: 2024/04/16 18:22:47 by taeoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,6 +151,13 @@ typedef struct s_game
 	t_img	screen;
 	t_img	textures[4];
 
+	t_img	minimap;
+	int		mmap_size;
+	int		mmap_pos;
+	double	mmap_grid;
+	double	mmap_pdot;
+	t_color	map_opacity;
+
 	void	*mlx;
 	void	*win;
 
@@ -250,5 +257,10 @@ void	move_forward(t_game *const game);
 void	move_back(t_game *const game);
 void	move_right(t_game *const game);
 void	move_left(t_game *const game);
+
+/* bonus */
+int		draw_player(t_game *const game, int x, int y);
+void	draw_minimap(t_game *const game, int x, int y);
+void	put_minimap(t_game *const game);
 
 #endif

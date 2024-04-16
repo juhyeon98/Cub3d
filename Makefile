@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+         #
+#    By: taeoh <taeoh@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/28 11:02:51 by juhyelee          #+#    #+#              #
-#    Updated: 2024/04/16 11:46:04 by juhyelee         ###   ########.fr        #
+#    Updated: 2024/04/16 16:18:56 by taeoh            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,8 @@ SRCS = srcs/main.c \
 	   srcs/render1.c \
 	   srcs/render2.c \
 	   srcs/event1.c \
-	   srcs/event2.c
+	   srcs/event2.c \
+	   srcs/minimap.c
 OBJS = ${SRCS:.c=.o}
 
 MK = make -C
