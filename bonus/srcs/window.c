@@ -6,7 +6,7 @@
 /*   By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 13:07:29 by taeoh             #+#    #+#             */
-/*   Updated: 2024/04/16 18:35:32 by juhyelee         ###   ########.fr       */
+/*   Updated: 2024/04/16 18:38:22 by juhyelee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,14 @@ void	load_window(t_game *game)
 		print_error(E_MLX);
 	set_position(game, game->map.map);
 	set_images(game, &game->screen, game->textures);
+	/* door */
+	game->door.obj = mlx_xpm_file_to_image(game->mlx, "texture/door.xpm", \
+										&game->door.w, &game->door.h);
+	if (!game->door.obj)
+		print_error(E_MLX);
+	game->door.addr = mlx_get_data_addr(game->door.obj, &game->door.bpp, \
+										&game->door.len, &game->door.endian);
+	/* door */
 	game->win = mlx_new_window(game->mlx, WIDTH, HEIGHT, "cub3D");
 	if (game->win == NULL)
 		print_error(E_MLX);

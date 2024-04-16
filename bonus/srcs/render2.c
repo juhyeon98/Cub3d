@@ -6,7 +6,7 @@
 /*   By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 11:31:36 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/04/16 18:30:37 by juhyelee         ###   ########.fr       */
+/*   Updated: 2024/04/16 16:48:11 by juhyelee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,15 @@ void	detech_wall(t_ray *const ray, t_map const map)
 	while (1)
 	{
 		if (map.map[ray->posy][ray->posx] == '1')
+		{
+			ray->is_door = 0;
 			break ;
+		}
+		if (map.map[ray->posy][ray->posx] == 'D')
+		{
+			ray->is_door = 1;
+			break ;
+		}
 		if (ray->nearx < ray->neary)
 		{
 			ray->nearx += ray->farx;
@@ -102,7 +110,10 @@ void	draw_texture(t_game *const game, t_ray const ray, \
 						* (draw_idx - ray.start) / \
 						(double)(ray.end - ray.start));
 		screen = get_addr(game->screen, draw_idx, w_idx);
-		texture = get_addr(game->textures[ray.index], last_idx, \
+		if (ray.is_door)
+			texture = get_addr(game->door, last_idx, 31 - ray.t_idx);
+		else
+			texture = get_addr(game->textures[ray.index], last_idx, \
 							31 - ray.t_idx);
 		*(unsigned int *)(screen) = *(unsigned int *)(texture);
 		draw_idx++;
