@@ -6,7 +6,7 @@
 /*   By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 10:43:32 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/04/16 15:44:33 by juhyelee         ###   ########.fr       */
+/*   Updated: 2024/04/16 16:11:03 by juhyelee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,8 @@ typedef enum e_type
 	T_WE,
 	T_EA,
 	T_FL,
-	T_CL
+	T_CL,
+	D1
 }t_type;
 
 typedef unsigned int	t_color;
@@ -132,6 +133,7 @@ typedef struct s_ray
 	int		stepy;
 
 	int		hit_side;
+	int		is_door;
 
 	double	dis;
 	double	over;

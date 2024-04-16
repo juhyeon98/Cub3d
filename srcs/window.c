@@ -6,7 +6,7 @@
 /*   By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 13:07:29 by taeoh             #+#    #+#             */
-/*   Updated: 2024/04/16 15:47:07 by juhyelee         ###   ########.fr       */
+/*   Updated: 2024/04/16 16:05:54 by juhyelee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,8 @@ void	load_window(t_game *game)
 	/* door */
 	game->door.obj = mlx_xpm_file_to_image(game->mlx, "texture/door.xpm", \
 										&game->door.w, &game->door.h);
+	if (!game->door.obj)
+		print_error(E_MLX);
 	game->door.addr = mlx_get_data_addr(game->door.obj, &game->door.bpp, \
 										&game->door.len, &game->door.endian);
 	/* door */

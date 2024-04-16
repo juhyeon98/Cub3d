@@ -6,7 +6,7 @@
 /*   By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 11:59:12 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/04/15 12:42:55 by juhyelee         ###   ########.fr       */
+/*   Updated: 2024/04/16 16:06:58 by juhyelee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	init_resource(t_rsrc *const rsrc, int const fd)
 		if (type >= T_NO && type <= T_EA)
 			rsrc->textures[type] = set_texture(line + 2);
 		else if (type == T_FL || type == T_CL)
-			rsrc->colors[type - 4] = set_color(line + 1);
+			rsrc->colors[type - T_FL] = set_color(line + 1);
 		free(line);
 	}
 }
