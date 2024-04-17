@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taeoh <taeoh@student.42.fr>                +#+  +:+       +#+        */
+/*   By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 10:43:32 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/04/17 12:03:35 by taeoh            ###   ########.fr       */
+/*   Updated: 2024/04/17 12:58:40 by juhyelee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@
 
 # define FOV 0.87
 # define ANGLE 0.05
-# define SPEED 0.1
-# define COLL 0.1
+# define SPEED 0.15
+# define COLL 0.01
 
 # define RIGHT_DIR -1
 # define LEFT_DIR 1

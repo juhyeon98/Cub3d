@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   event1_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taeoh <taeoh@student.42.fr>                +#+  +:+       +#+        */
+/*   By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 12:48:12 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/04/17 12:03:13 by taeoh            ###   ########.fr       */
+/*   Updated: 2024/04/17 13:54:48 by juhyelee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d_bonus.h"
+#include <stdio.h>
 
 int	exit_program(void)
 {
@@ -18,7 +19,7 @@ int	exit_program(void)
 	return (0);
 }
 
-int	key_handling(int keycode, t_game *const game)
+int	key_press(int keycode, t_game *const game)
 {
 	if (keycode == ESC_KEY)
 		exit(1);
@@ -37,48 +38,30 @@ int	key_handling(int keycode, t_game *const game)
 	return (0);
 }
 
-int	door_handling(int keycode, t_game *const game)
+void	door_handling(t_game *const game)
 {
 	int	x;
 	int	y;
 
-	if (keycode == 14)
-	{
-		x = game->posx + game->dirx;
-		y = game->posy + game->diry;
-		if (game->map.map[y][x] == 'D')
-			game->map.map[y][x] = 'O';
-		else if (game->map.map[y][x] == 'O')
-			game->map.map[y][x] = 'D';
-	}
-	render(game);
-	return (0);
+	x = game->posx + game->dirx;
+	y = game->posy + game->diry;
+	if (game->map.map[y][x] == 'D')
+		game->map.map[y][x] = 'O';
+	else if (game->map.map[y][x] == 'O')
+		game->map.map[y][x] = 'D';
 }
 
-void	turn_right(t_game *const game)
+void	turn(t_game *const game, double const diff)
 {
 	double const	olddirx = game->dirx;
 	double const	olddiry = game->diry;
 	double const	oldplanx = game->planx;
 	double const	oldplany = game->plany;
 
-	game->dirx = olddirx * cos(ANGLE) - olddiry * sin(ANGLE);
-	game->diry = olddirx * sin(ANGLE) + olddiry * cos(ANGLE);
-	game->planx = oldplanx * cos(ANGLE) - oldplany * sin(ANGLE);
-	game->plany = oldplanx * sin(ANGLE) + oldplany * cos(ANGLE);
-}
-
-void	turn_left(t_game *const game)
-{
-	double const	olddirx = game->dirx;
-	double const	olddiry = game->diry;
-	double const	oldplanx = game->planx;
-	double const	oldplany = game->plany;
-
-	game->dirx = olddirx * cos(-ANGLE) - olddiry * sin(-ANGLE);
-	game->diry = olddirx * sin(-ANGLE) + olddiry * cos(-ANGLE);
-	game->planx = oldplanx * cos(-ANGLE) - oldplany * sin(-ANGLE);
-	game->plany = oldplanx * sin(-ANGLE) + oldplany * cos(-ANGLE);
+	game->dirx = olddirx * cos(ANGLE * diff) - olddiry * sin(ANGLE * diff);
+	game->diry = olddirx * sin(ANGLE * diff) + olddiry * cos(ANGLE * diff);
+	game->planx = oldplanx * cos(ANGLE * diff) - oldplany * sin(ANGLE * diff);
+	game->plany = oldplanx * sin(ANGLE * diff) + oldplany * cos(ANGLE * diff);
 }
 
 void	move_forward(t_game *const game)

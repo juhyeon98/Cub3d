@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taeoh <taeoh@student.42.fr>                +#+  +:+       +#+        */
+/*   By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 10:43:32 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/04/17 12:05:13 by taeoh            ###   ########.fr       */
+/*   Updated: 2024/04/17 15:12:34 by juhyelee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@
 
 # define FOV 0.87
 # define ANGLE 0.05
-# define SPEED 0.1
-# define COLL 0.1
+# define SPEED 0.05
+# define COLL 0.01
 
 # define RIGHT_DIR -1
 # define LEFT_DIR 1
@@ -161,6 +161,7 @@ typedef struct s_game
 
 	t_img	screen;
 	t_img	textures[4];
+	t_img	wall;
 	t_img	door;
 
 	t_img	minimap;
@@ -271,13 +272,11 @@ char	*get_addr(t_img const img, size_t const y, size_t const x);
 
 /* event */
 int		exit_program(void);
-int		key_handling(int keycode, t_game *const game);
-int		key_handling2(int keycode, t_game *const game);
+int		key_press(int keycode, t_game *const game);
+int		key_release(int keycode, t_game *const game);
+void	door_handling(t_game *const game);
 
-int		door_handling(int keycode, t_game *const game);
-int		is_close(t_game *const game, int *const y, int *const x);
-void	turn_right(t_game *const game);
-void	turn_left(t_game *const game);
+void	turn(t_game *const game, double const diff);
 void	move_forward(t_game *const game);
 void	move_back(t_game *const game);
 void	move_right(t_game *const game);
