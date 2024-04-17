@@ -3,20 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   render1_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taeoh <taeoh@student.42.fr>                +#+  +:+       +#+        */
+/*   By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 10:55:33 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/04/17 12:03:03 by taeoh            ###   ########.fr       */
+/*   Updated: 2024/04/17 15:09:59 by juhyelee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d_bonus.h"
+#include <stdio.h>
+
+void	flush_wall(t_game *game)
+{
+	int	x;
+	int	y;
+
+	x = -1;
+	y = -1;
+	while (++y < HEIGHT)
+	{
+		while (++x < WIDTH)
+			*(unsigned int *)(game->wall.addr + y * game->wall.len + (game->wall.bpp / 8) * x) \
+				= 0xFF000000;
+		x = -1;
+	}
+}
 
 void	render(t_game *game)
 {
 	size_t	w_idx;
 
 	init_window(game->mlx, game->win, &game->screen, &game->rsrc);
+	flush_wall(game);
 	w_idx = 0;
 	while (w_idx < WIDTH)
 	{
@@ -29,7 +47,9 @@ void	render(t_game *game)
 		w_idx++;
 	}
 	mlx_put_image_to_window(game->mlx, game->win, game->screen.obj, 0, 0);
+	mlx_put_image_to_window(game->mlx, game->win, game->wall.obj, 0, 0);
 	put_minimap(game);
+	mlx_sync(MLX_SYNC_WIN_CMD_COMPLETED, game->win);
 }
 
 void	set_back(t_img *const img, size_t const h_idx, t_color const col)

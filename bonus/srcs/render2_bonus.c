@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render2_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taeoh <taeoh@student.42.fr>                +#+  +:+       +#+        */
+/*   By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 11:31:36 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/04/17 12:03:02 by taeoh            ###   ########.fr       */
+/*   Updated: 2024/04/17 14:53:08 by juhyelee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ void	draw_texture(t_game *const game, t_ray const ray, \
 						/ 2 + ((double)TXT_WIDTH / ray.over) \
 						* (draw_idx - ray.start) / \
 						(double)(ray.end - ray.start));
-		screen = get_addr(game->screen, draw_idx, w_idx);
+		screen = get_addr(game->wall, draw_idx, w_idx);
 		if (ray.is_door)
 			texture = get_addr(game->door, last_idx, 31 - ray.t_idx);
 		else

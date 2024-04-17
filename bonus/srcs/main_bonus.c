@@ -3,19 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taeoh <taeoh@student.42.fr>                +#+  +:+       +#+        */
+/*   By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 12:14:08 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/04/17 12:03:08 by taeoh            ###   ########.fr       */
+/*   Updated: 2024/04/17 15:08:29 by juhyelee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d_bonus.h"
 
+void	a(){system("leaks cub3D");}
+
 int	main(int argc, char *argv[])
 {
 	t_game	game;
 
+	atexit(a);
 	if (argc < 2)
 		print_error(E_ARG_LACK);
 	else if (argc > 2)
@@ -23,10 +26,11 @@ int	main(int argc, char *argv[])
 	parse(&game.map, &game.rsrc, argv[1]);
 	load_window(&game);
 	render(&game);
+	mlx_mouse_hide();
+	mlx_mouse_move(game.win, WIDTH / 2, HEIGHT / 2);
 	mlx_hook(game.win, KEY_EXIT, 0, exit_program, NULL);
-	mlx_hook(game.win, KEY_PRESS, 0, key_handling, &game);
-	mlx_key_hook(game.win, door_handling, &game);
-	mlx_key_hook(game.win, key_handling2, &game);
+	mlx_hook(game.win, KEY_PRESS, 0, key_press, &game);
+	mlx_key_hook(game.win, key_release, &game);
 	mlx_loop_hook(game.mlx, next_frame, &game);
 	mlx_loop(game.mlx);
 	exit(0);
@@ -47,7 +51,7 @@ char	*get_addr(t_img const img, size_t const y, size_t const x)
 	return (img.addr + (y * img.len + x * (img.bpp / 8)));
 }
 
-int	key_handling2(int keycode, t_game *const game)
+int	key_release(int keycode, t_game *const game)
 {
 	if (keycode == RIGHT)
 		game->turn_right = 0;
@@ -61,15 +65,21 @@ int	key_handling2(int keycode, t_game *const game)
 		game->move_right = 0;
 	else if (keycode == A)
 		game->move_left = 0;
+	else if (keycode == 14)
+		door_handling(game);
 	return (0);
 }
 
 int	next_frame(t_game *game)
 {
-	if (game->turn_right)
-		turn_right(game);
-	if (game->turn_left)
-		turn_left(game);
+	int	x;
+	int	y;
+	int	diff;
+
+	mlx_mouse_get_pos(game->win, &x, &y);
+	diff = x - WIDTH / 2;
+	mlx_mouse_move(game->win, WIDTH / 2, HEIGHT / 2);
+	turn(game, diff / 15.0 + game->turn_left * (-1) + game->turn_right);
 	if (game->move_front)
 		move_forward(game);
 	if (game->move_back)
