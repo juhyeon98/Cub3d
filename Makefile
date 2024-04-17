@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+         #
+#    By: taeoh <taeoh@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/28 11:02:51 by juhyelee          #+#    #+#              #
-#    Updated: 2024/04/16 18:47:54 by juhyelee         ###   ########.fr        #
+#    Updated: 2024/04/17 12:04:25 by taeoh            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,20 +36,20 @@ MAN_OBJS	= ${MAN_SRCS:.c=.o}
 BNS_DIR		= bonus
 BNS_INCS	= ${BNS_DIR}/includes
 BNS_SDIR	= ${BNS_DIR}/srcs
-BNS_SRCS	= ${BNS_SDIR}/main.c \
-			  ${BNS_SDIR}/error.c \
-			  ${BNS_SDIR}/get_line.c \
-			  ${BNS_SDIR}/rsrc1.c \
-			  ${BNS_SDIR}/rsrc2.c \
-			  ${BNS_SDIR}/map1.c \
-			  ${BNS_SDIR}/map2.c \
-			  ${BNS_SDIR}/map3.c \
-			  ${BNS_SDIR}/window.c \
-			  ${BNS_SDIR}/render1.c \
-			  ${BNS_SDIR}/render2.c \
-			  ${BNS_SDIR}/minimap.c \
-			  ${BNS_SDIR}/event1.c \
-			  ${BNS_SDIR}/event2.c
+BNS_SRCS	= ${BNS_SDIR}/main_bonus.c \
+			  ${BNS_SDIR}/error_bonus.c \
+			  ${BNS_SDIR}/get_line_bonus.c \
+			  ${BNS_SDIR}/rsrc1_bonus.c \
+			  ${BNS_SDIR}/rsrc2_bonus.c \
+			  ${BNS_SDIR}/map1_bonus.c \
+			  ${BNS_SDIR}/map2_bonus.c \
+			  ${BNS_SDIR}/map3_bonus.c \
+			  ${BNS_SDIR}/window_bonus.c \
+			  ${BNS_SDIR}/render1_bonus.c \
+			  ${BNS_SDIR}/render2_bonus.c \
+			  ${BNS_SDIR}/minimap_bonus.c \
+			  ${BNS_SDIR}/event1_bonus.c \
+			  ${BNS_SDIR}/event2_bonus.c
 BNS_OBJS	= ${BNS_SRCS:.c=.o}
 
 MK			= make -C

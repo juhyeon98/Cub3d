@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   window.c                                           :+:      :+:    :+:   */
+/*   window_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: taeoh <taeoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 13:07:29 by taeoh             #+#    #+#             */
-/*   Updated: 2024/04/16 18:38:22 by juhyelee         ###   ########.fr       */
+/*   Updated: 2024/04/17 12:02:55 by taeoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../includes/cub3d_bonus.h"
 
 void	init_window(void *mlx, void *win, t_img *img, t_rsrc *rsrc)
 {
@@ -96,6 +96,12 @@ void	set_images(t_game *game, t_img *sc, t_img *ts)
 
 void	load_window(t_game *game)
 {
+	game->move_back = 0;
+	game->move_front = 0;
+	game->move_left = 0;
+	game->move_right = 0;
+	game->turn_left = 0;
+	game->turn_right = 0;
 	game->mlx = mlx_init();
 	if (game->mlx == NULL)
 		print_error(E_MLX);

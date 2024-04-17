@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   event1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: taeoh <taeoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 12:48:12 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/04/16 18:28:40 by juhyelee         ###   ########.fr       */
+/*   Updated: 2024/04/17 11:59:06 by taeoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	exit_program(void)
 int	key_handling(int keycode, t_game *const game)
 {
 	if (keycode == ESC_KEY)
-		exit(1);
+		exit(0);
 	if (keycode == RIGHT)
 		turn_right(game);
 	else if (keycode == LEFT)

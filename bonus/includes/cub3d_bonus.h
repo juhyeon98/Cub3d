@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: taeoh <taeoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 10:43:32 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/04/16 18:48:43 by juhyelee         ###   ########.fr       */
+/*   Updated: 2024/04/17 12:05:13 by taeoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#ifndef CUB3D_BONUS_H
+# define CUB3D_BONUS_H
 
-# include "libft.h"
+# include "libft_bonus.h"
 # include "../../mlx/mlx.h"
 # include <math.h>
 # include <fcntl.h>
@@ -180,6 +180,13 @@ typedef struct s_game
 	double	planx;
 	double	plany;
 
+	int		move_front;
+	int		move_back;
+	int		move_right;
+	int		move_left;
+	int		turn_left;
+	int		turn_right;
+
 	int		time;
 	int		f_time;
 	t_ray	ray;
@@ -245,6 +252,7 @@ int		check_down(t_map const map, size_t const y, size_t const x);
 int		check_right(t_map const map, size_t const y, size_t const x);
 
 /* rendering */
+int		next_frame(t_game *game);
 void	render(t_game *const game);
 void	set_back(t_img *const img, size_t const h_idx, t_color const col);
 void	init_ray(t_game const game, t_ray *const ray, size_t w_idx);
@@ -264,6 +272,8 @@ char	*get_addr(t_img const img, size_t const y, size_t const x);
 /* event */
 int		exit_program(void);
 int		key_handling(int keycode, t_game *const game);
+int		key_handling2(int keycode, t_game *const game);
+
 int		door_handling(int keycode, t_game *const game);
 int		is_close(t_game *const game, int *const y, int *const x);
 void	turn_right(t_game *const game);

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   event1.c                                           :+:      :+:    :+:   */
+/*   event1_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: taeoh <taeoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 12:48:12 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/04/16 17:56:36 by juhyelee         ###   ########.fr       */
+/*   Updated: 2024/04/17 12:03:13 by taeoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../includes/cub3d_bonus.h"
 
 int	exit_program(void)
 {
@@ -23,18 +23,17 @@ int	key_handling(int keycode, t_game *const game)
 	if (keycode == ESC_KEY)
 		exit(1);
 	if (keycode == RIGHT)
-		turn_right(game);
+		game->turn_right = 1;
 	else if (keycode == LEFT)
-		turn_left(game);
+		game->turn_left = 1;
 	else if (keycode == W)
-		move_forward(game);
+		game->move_front = 1;
 	else if (keycode == S)
-		move_back(game);
+		game->move_back = 1;
 	else if (keycode == D)
-		move_right(game);
+		game->move_right = 1;
 	else if (keycode == A)
-		move_left(game);
-	render(game);
+		game->move_left = 1;
 	return (0);
 }
 
