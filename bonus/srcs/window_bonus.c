@@ -6,12 +6,11 @@
 /*   By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 13:07:29 by taeoh             #+#    #+#             */
-/*   Updated: 2024/04/17 14:55:47 by juhyelee         ###   ########.fr       */
+/*   Updated: 2024/04/17 16:14:10 by juhyelee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d_bonus.h"
-#include <stdio.h>
 
 void	init_window(void *mlx, void *win, t_img *img, t_rsrc *rsrc)
 {

@@ -6,7 +6,7 @@
 /*   By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 18:21:32 by taeoh             #+#    #+#             */
-/*   Updated: 2024/04/17 12:32:04 by juhyelee         ###   ########.fr       */
+/*   Updated: 2024/04/17 16:26:53 by juhyelee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,9 @@ int	draw_player(t_game *const game, int x, int y)
 
 void	draw_minimap(t_game *const game, int x, int y)
 {
-	int	offx;
-	int	offy;
+	int		offx;
+	int		offy;
+	char	*addr;
 
 	while (++y < game->mmap_size)
 	{
@@ -44,16 +45,17 @@ void	draw_minimap(t_game *const game, int x, int y)
 			game->mmap_grid / game->mmap_size * x);
 			offy = (int)(game->posy + (-1) * game->mmap_grid / 2 + \
 			game->mmap_grid / game->mmap_size * y);
+			addr = get_addr(game->minimap, y, x);
 			if (draw_player(game, x, y))
-				*(unsigned int *)(game->minimap.addr + y * game->minimap.len + \
-				(game->minimap.bpp / 8) * x) = 0xDD0000;
+				*(unsigned int *)addr = 0xDD0000;
 			else if ((offx >= 0 && offy >= 0 && offx < (int)game->map.w && \
 			offy < (int)game->map.h) && (game->map.map[offy][offx] == '1'))
-				*(unsigned int *)(game->minimap.addr + y * game->minimap.len + \
-				(game->minimap.bpp / 8) * x) = 0x333333 | game->map_opacity;
+				*(unsigned int *)addr = 0x333333 | game->map_opacity;
+			else if ((offx >= 0 && offy >= 0 && offx < (int)game->map.w && \
+			offy < (int)game->map.h) && (game->map.map[offy][offx] == 'D'))
+				*(unsigned int *)addr = 0xAAAAAA | game->map_opacity;
 			else
-				*(unsigned int *)(game->minimap.addr + y * game->minimap.len + \
-				(game->minimap.bpp / 8) * x) = 0xFFFFFF | game->map_opacity;
+				*(unsigned int *)addr = 0xFFFFFF | game->map_opacity;
 		}
 	}
 }
@@ -63,7 +65,7 @@ void	put_minimap(t_game *const game)
 	game->mmap_size = HEIGHT / 5;
 	game->mmap_pos = HEIGHT / 50;
 	game->mmap_grid = 9;
-	game->mmap_pdot = COLL;
+	game->mmap_pdot = 0.15;
 	game->map_opacity = 0xDD000000;
 	game->minimap.obj = mlx_new_image(game->mlx, game->mmap_size, \
 	game->mmap_size);

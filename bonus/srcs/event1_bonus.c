@@ -6,12 +6,11 @@
 /*   By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 12:48:12 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/04/17 13:54:48 by juhyelee         ###   ########.fr       */
+/*   Updated: 2024/04/17 16:14:04 by juhyelee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d_bonus.h"
-#include <stdio.h>
 
 int	exit_program(void)
 {

@@ -6,14 +6,13 @@
 /*   By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 10:55:33 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/04/17 15:09:59 by juhyelee         ###   ########.fr       */
+/*   Updated: 2024/04/17 16:14:55 by juhyelee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d_bonus.h"
-#include <stdio.h>
 
-void	flush_wall(t_game *game)
+void	flush_wall(t_img *const wall)
 {
 	int	x;
 	int	y;
@@ -23,7 +22,7 @@ void	flush_wall(t_game *game)
 	while (++y < HEIGHT)
 	{
 		while (++x < WIDTH)
-			*(unsigned int *)(game->wall.addr + y * game->wall.len + (game->wall.bpp / 8) * x) \
+			*(unsigned int *)(wall->addr + y * wall->len + (wall->bpp / 8) * x) \
 				= 0xFF000000;
 		x = -1;
 	}
@@ -34,7 +33,7 @@ void	render(t_game *game)
 	size_t	w_idx;
 
 	init_window(game->mlx, game->win, &game->screen, &game->rsrc);
-	flush_wall(game);
+	flush_wall(&game->wall);
 	w_idx = 0;
 	while (w_idx < WIDTH)
 	{

@@ -6,7 +6,7 @@
 /*   By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 10:43:32 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/04/17 15:12:34 by juhyelee         ###   ########.fr       */
+/*   Updated: 2024/04/17 16:22:05 by juhyelee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -254,6 +254,7 @@ int		check_right(t_map const map, size_t const y, size_t const x);
 
 /* rendering */
 int		next_frame(t_game *game);
+void	flush_wall(t_img *const wall);
 void	render(t_game *const game);
 void	set_back(t_img *const img, size_t const h_idx, t_color const col);
 void	init_ray(t_game const game, t_ray *const ray, size_t w_idx);
