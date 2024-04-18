@@ -6,7 +6,7 @@
 /*   By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 10:43:32 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/04/18 16:20:31 by juhyelee         ###   ########.fr       */
+/*   Updated: 2024/04/18 17:13:36 by juhyelee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ enum e_error
 	E_MAP_EMPL,
 	E_MAP_2BIG,
 	E_MAP_2PLAYER,
+	E_MAP_2COIN,
 	E_MAP_NOPLAYER,
 	E_MLX
 };
@@ -183,6 +184,9 @@ typedef struct s_game
 	double	planx;
 	double	plany;
 
+	double	spx;
+	double	spy;
+
 	int		move_front;
 	int		move_back;
 	int		move_right;
@@ -220,6 +224,7 @@ void	organize(char *const str);
 
 void	init_window(void *mlx, void *win, t_img *img, t_rsrc *rsrc);
 void	set_position(t_game *game, char **map);
+void	apply_position(t_game *game, char **map, size_t y, size_t x);
 void	set_png_images(t_game *game, t_img *ts, int i);
 void	set_images(t_game *game, t_img *sc, t_img *ts);
 void	load_window(t_game *game);
@@ -246,6 +251,7 @@ size_t	get_line_len(char const *str);
 void	check_elements(t_map const map);
 int		is_player(char const el);
 int		check_player(char const el);
+int		check_coin(char const el);
 void	check_surround(t_map const map);
 int		check_visited(t_map const map, size_t *y, size_t *x);
 void	copy_map(t_map *const dst, t_map const org);

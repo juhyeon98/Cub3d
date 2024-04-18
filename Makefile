@@ -6,7 +6,7 @@
 #    By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/28 11:02:51 by juhyelee          #+#    #+#              #
-#    Updated: 2024/04/18 13:29:41 by juhyelee         ###   ########.fr        #
+#    Updated: 2024/04/18 17:15:46 by juhyelee         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,7 +44,9 @@ BNS_SRCS	= ${BNS_SDIR}/main_bonus.c \
 			  ${BNS_SDIR}/map1_bonus.c \
 			  ${BNS_SDIR}/map2_bonus.c \
 			  ${BNS_SDIR}/map3_bonus.c \
-			  ${BNS_SDIR}/window_bonus.c \
+			  ${BNS_SDIR}/map4_bonus.c \
+			  ${BNS_SDIR}/window1_bonus.c \
+			  ${BNS_SDIR}/window2_bonus.c \
 			  ${BNS_SDIR}/render1_bonus.c \
 			  ${BNS_SDIR}/render2_bonus.c \
 			  ${BNS_SDIR}/minimap_bonus.c \
