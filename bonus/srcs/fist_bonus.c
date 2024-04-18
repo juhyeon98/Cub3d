@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   fist_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taeoh <taeoh@student.42.fr>                +#+  +:+       +#+        */
+/*   By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 13:26:42 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/04/18 17:51:48 by taeoh            ###   ########.fr       */
+/*   Updated: 2024/04/19 07:10:27 by juhyelee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d_bonus.h"
-
 
 void	draw_fist(t_game *const game, t_img const fist)
 {
