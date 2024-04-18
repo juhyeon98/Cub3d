@@ -6,12 +6,11 @@
 /*   By: taeoh <taeoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 16:26:56 by taeoh             #+#    #+#             */
-/*   Updated: 2024/04/18 17:44:10 by taeoh            ###   ########.fr       */
+/*   Updated: 2024/04/18 17:50:52 by taeoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d_bonus.h"
-#include <stdio.h>
 
 int	get_spr_i(t_game *game)
 {
@@ -58,7 +57,7 @@ void	insert_sprite(t_game *const game, t_sprite *const s)
 	i = s->xstart - 1;
 	while (++i < s->xend)
 	{
-		s->texx = i - (-s->width / 2 + s->screen) * 32 / s->width;
+		s->texx = (i - (-s->width / 2 + s->screen)) * 32 / s->width;
 		if (s->camy >= 0 && i >= 0 && i <= WIDTH && s->camy < game->buffer[i])
 		{
 			j = s->ystart - 1;
@@ -78,7 +77,6 @@ void	put_sprite(t_game *const game)
 {
 	t_sprite	s;
 
-	printf("%f %f\n", game->spx, game->spy);
 	flush_image(&game->spr);
 	init_sprite(game, &s);
 	insert_sprite(game, &s);

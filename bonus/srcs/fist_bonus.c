@@ -6,7 +6,7 @@
 /*   By: taeoh <taeoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 13:26:42 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/04/18 17:40:24 by taeoh            ###   ########.fr       */
+/*   Updated: 2024/04/18 17:51:48 by taeoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 void	draw_fist(t_game *const game, t_img const fist)
 {
 	mlx_put_image_to_window(game->mlx, game->win, fist.obj, \
-	10, HEIGHT - fist.h);
+	0, HEIGHT - fist.h);
 }
 
 void	animation_fist(t_game *const game)
