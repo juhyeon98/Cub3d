@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: taeoh <taeoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 11:17:13 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/04/18 16:46:41 by juhyelee         ###   ########.fr       */
+/*   Updated: 2024/04/18 17:46:39 by taeoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,8 @@ void	map_error(enum e_error num)
 		ft_putendl_fd("Too many player in map", STDERR_FILENO);
 	else if (num == E_MAP_2COIN)
 		ft_putendl_fd("Too many coin in map", STDERR_FILENO);
-	else if (num == E_MAP_NOPLAYER)
-		ft_putendl_fd("Not contain player in map", STDERR_FILENO);
+	else if (num == E_MAP_NOCON)
+		ft_putendl_fd("You somthing wrong", STDERR_FILENO);
 	else if (num == E_MLX)
 		ft_putendl_fd("MLX error", STDERR_FILENO);
 }

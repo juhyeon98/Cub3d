@@ -6,7 +6,7 @@
 /*   By: taeoh <taeoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 14:33:32 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/04/18 17:25:23 by taeoh            ###   ########.fr       */
+/*   Updated: 2024/04/18 17:46:05 by taeoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ void	check_elements(t_map const map)
 		}
 		h++;
 	}
-	if (p_one == 0)
-		print_error(E_MAP_NOPLAYER);
+	if (p_one == 0 || c_one == 0)
+		print_error(E_MAP_NOCON);
 }
 
 int	is_player(char const el)

@@ -6,7 +6,7 @@
 /*   By: taeoh <taeoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 10:43:32 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/04/18 17:27:34 by taeoh            ###   ########.fr       */
+/*   Updated: 2024/04/18 17:46:18 by taeoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ enum e_error
 	E_MAP_2BIG,
 	E_MAP_2PLAYER,
 	E_MAP_2COIN,
-	E_MAP_NOPLAYER,
+	E_MAP_NOCON,
 	E_MLX
 };
 

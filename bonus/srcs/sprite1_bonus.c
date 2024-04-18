@@ -6,11 +6,12 @@
 /*   By: taeoh <taeoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 16:26:56 by taeoh             #+#    #+#             */
-/*   Updated: 2024/04/18 17:39:35 by taeoh            ###   ########.fr       */
+/*   Updated: 2024/04/18 17:44:10 by taeoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d_bonus.h"
+#include <stdio.h>
 
 int	get_spr_i(t_game *game)
 {
@@ -77,6 +78,7 @@ void	put_sprite(t_game *const game)
 {
 	t_sprite	s;
 
+	printf("%f %f\n", game->spx, game->spy);
 	flush_image(&game->spr);
 	init_sprite(game, &s);
 	insert_sprite(game, &s);
