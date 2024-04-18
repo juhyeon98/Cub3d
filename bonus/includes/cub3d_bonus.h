@@ -6,7 +6,7 @@
 /*   By: taeoh <taeoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 10:43:32 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/04/18 16:16:30 by taeoh            ###   ########.fr       */
+/*   Updated: 2024/04/18 16:55:10 by taeoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,10 +154,22 @@ typedef struct s_draw
 	char	*texture;
 }t_draw;
 
-// typedef struct s_sprite
-// {
-// 	haha
-// }t_sprite;
+typedef struct s_sprite
+{
+	double	spx;
+	double	spy;
+	double	inv_cam;
+	double	camx;
+	double	camy;
+	int		screen;
+	int		width;
+	int		xstart;
+	int		ystart;
+	int		xend;
+	int		yend;
+	int		texx;
+	int		texy;
+}t_sprite;
 
 typedef struct s_game
 {
@@ -193,13 +205,13 @@ typedef struct s_game
 	int		turn_left;
 	int		turn_right;
 
-	t_color	time;
 	t_ray	ray;
 
 	t_img	spr;
 	t_img	coin[5];
-	double	spix;
-	double	spiy;
+	t_color	time;
+	double	spx;
+	double	spy;
 	double	buffer[WIDTH];
 }t_game;
 
@@ -295,7 +307,7 @@ void	move_left(t_game *const game);
 int		draw_player(t_game *const game, int x, int y);
 void	draw_minimap(t_game *const game, int x, int y);
 void	put_minimap(t_game *const game);
-void	put_sprite(t_game *game);
+void	put_sprite(t_game *const game);
 void	flush_image(t_img *image);
 
 #endif
