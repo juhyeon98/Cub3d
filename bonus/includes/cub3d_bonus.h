@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: taeoh <taeoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 10:43:32 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/04/17 15:12:34 by juhyelee         ###   ########.fr       */
+/*   Updated: 2024/04/18 16:16:30 by taeoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,6 +154,11 @@ typedef struct s_draw
 	char	*texture;
 }t_draw;
 
+// typedef struct s_sprite
+// {
+// 	haha
+// }t_sprite;
+
 typedef struct s_game
 {
 	t_rsrc	rsrc;
@@ -188,9 +193,14 @@ typedef struct s_game
 	int		turn_left;
 	int		turn_right;
 
-	int		time;
-	int		f_time;
+	t_color	time;
 	t_ray	ray;
+
+	t_img	spr;
+	t_img	coin[5];
+	double	spix;
+	double	spiy;
+	double	buffer[WIDTH];
 }t_game;
 
 typedef struct s_move
@@ -261,7 +271,7 @@ void	init_nearvec(t_ray *const ray, t_game const game);
 
 void	detech_wall(t_ray *const ray, t_map const map);
 
-void	set_distance(t_game const game, t_ray *const ray);
+void	set_distance(t_game *const game, t_ray *const ray);
 
 void	select_texture(t_ray *const ray);
 void	set_texture_index(t_game const game, t_ray *const ray);
@@ -285,5 +295,7 @@ void	move_left(t_game *const game);
 int		draw_player(t_game *const game, int x, int y);
 void	draw_minimap(t_game *const game, int x, int y);
 void	put_minimap(t_game *const game);
+void	put_sprite(t_game *game);
+void	flush_image(t_img *image);
 
 #endif

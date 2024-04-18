@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   window_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: taeoh <taeoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 13:07:29 by taeoh             #+#    #+#             */
-/*   Updated: 2024/04/17 14:55:47 by juhyelee         ###   ########.fr       */
+/*   Updated: 2024/04/18 15:58:55 by taeoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,55 @@ void	set_png_images(t_game *game, t_img *ts, int i)
 					&ts[i].len, &ts[i].endian);
 }
 
+void	flush_image(t_img *image)
+{
+	int	x;
+	int	y;
+
+	x = -1;
+	y = -1;
+	while (++y < HEIGHT)
+	{
+		while (++x < WIDTH)
+			*(unsigned int *)(image->addr + y * image->len + (image->bpp / 8) * x) \
+				= 0xFF000000;
+		x = -1;
+	}
+}
+void	sprite_images(t_game *game)
+{
+	game->spr.obj = mlx_new_image(game->mlx, WIDTH, HEIGHT);
+	if (game->spr.obj == NULL)
+		print_error(E_XPM_FAIL);
+	game->spr.addr = mlx_get_data_addr(game->spr.obj, &game->spr.bpp, \
+									&game->spr.len, &game->spr.endian);
+	flush_image(&game->spr);
+	game->coin[0].obj = mlx_xpm_file_to_image(game->mlx, "texture/a.xpm", &game->coin[0].w, &game->coin[0].h);
+	if (game->coin[0].obj == NULL)
+		print_error(E_XPM_FAIL);
+	game->coin[0].addr = mlx_get_data_addr(game->coin[0].obj, &game->coin[0].bpp, \
+									&game->coin[0].len, &game->coin[0].endian);
+	game->coin[1].obj = mlx_xpm_file_to_image(game->mlx, "texture/b.xpm", &game->coin[1].w, &game->coin[1].h);
+	if (game->coin[1].obj == NULL)
+		print_error(E_XPM_FAIL);
+	game->coin[1].addr = mlx_get_data_addr(game->coin[1].obj, &game->coin[1].bpp, \
+									&game->coin[1].len, &game->coin[1].endian);
+	game->coin[2].obj = mlx_xpm_file_to_image(game->mlx, "texture/c.xpm", &game->coin[2].w, &game->coin[2].h);
+	if (game->coin[2].obj == NULL)
+		print_error(E_XPM_FAIL);
+	game->coin[2].addr = mlx_get_data_addr(game->coin[2].obj, &game->coin[2].bpp, \
+									&game->coin[2].len, &game->coin[2].endian);
+	game->coin[3].obj = mlx_xpm_file_to_image(game->mlx, "texture/d.xpm", &game->coin[3].w, &game->coin[3].h);
+	if (game->coin[3].obj == NULL)
+		print_error(E_XPM_FAIL);
+	game->coin[3].addr = mlx_get_data_addr(game->coin[3].obj, &game->coin[3].bpp, \
+									&game->coin[3].len, &game->coin[3].endian);
+	game->coin[4].obj = mlx_xpm_file_to_image(game->mlx, "texture/e.xpm", &game->coin[4].w, &game->coin[4].h);
+	if (game->coin[4].obj == NULL)
+		print_error(E_XPM_FAIL);
+	game->coin[4].addr = mlx_get_data_addr(game->coin[4].obj, &game->coin[4].bpp, \
+									&game->coin[4].len, &game->coin[4].endian);
+}
 void	set_images(t_game *game, t_img *sc, t_img *ts)
 {
 	sc->obj = mlx_new_image(game->mlx, WIDTH, HEIGHT);
@@ -96,6 +145,7 @@ void	set_images(t_game *game, t_img *sc, t_img *ts)
 	set_png_images(game, ts, 1);
 	set_png_images(game, ts, 2);
 	set_png_images(game, ts, 3);
+	sprite_images(game);
 }
 
 void	load_window(t_game *game)

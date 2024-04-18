@@ -6,7 +6,7 @@
 /*   By: taeoh <taeoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 15:26:00 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/04/17 12:03:05 by taeoh            ###   ########.fr       */
+/*   Updated: 2024/04/17 16:12:27 by taeoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int	check_up(t_map const map, size_t const y, size_t const x)
 		print_error(E_MAP_INVAL);
 	else if (map.map[y - 1][x] == ' ')
 		print_error(E_MAP_INVAL);
-	return (map.map[y - 1][x] == '0' || is_player(map.map[y - 1][x]));
+	return (map.map[y - 1][x] == 'C' || map.map[y - 1][x] == '0' || is_player(map.map[y - 1][x]));
 }
 
 int	check_left(t_map const map, size_t const y, size_t const x)
@@ -72,5 +72,5 @@ int	check_left(t_map const map, size_t const y, size_t const x)
 		print_error(E_MAP_INVAL);
 	else if (map.map[y][x - 1] == ' ')
 		print_error(E_MAP_INVAL);
-	return (map.map[y][x - 1] == '0' || is_player(map.map[y][x - 1]));
+	return (map.map[y - 1][x] == 'C' || map.map[y][x - 1] == '0' || is_player(map.map[y][x - 1]));
 }

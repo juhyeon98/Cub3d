@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: taeoh <taeoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 18:21:32 by taeoh             #+#    #+#             */
-/*   Updated: 2024/04/17 12:32:04 by juhyelee         ###   ########.fr       */
+/*   Updated: 2024/04/17 16:14:07 by taeoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	put_minimap(t_game *const game)
 	game->mmap_size = HEIGHT / 5;
 	game->mmap_pos = HEIGHT / 50;
 	game->mmap_grid = 9;
-	game->mmap_pdot = COLL;
+	game->mmap_pdot = 0.15;
 	game->map_opacity = 0xDD000000;
 	game->minimap.obj = mlx_new_image(game->mlx, game->mmap_size, \
 	game->mmap_size);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render2_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: taeoh <taeoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 11:31:36 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/04/17 14:53:08 by juhyelee         ###   ########.fr       */
+/*   Updated: 2024/04/18 12:00:01 by taeoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	detech_wall(t_ray *const ray, t_map const map)
 	}
 }
 
-void	set_distance(t_game const game, t_ray *const ray)
+void	set_distance(t_game *const game, t_ray *const ray)
 {
 	double const	rayx = ray->rayx;
 	double const	rayy = ray->rayy;
@@ -49,9 +49,9 @@ void	set_distance(t_game const game, t_ray *const ray)
 	int const		stepy = ray->stepy;
 
 	if (ray->hit_side == DETC_Y)
-		ray->dis = (ray->posx - game.posx + (1 - stepx) / 2) / rayx;
+		ray->dis = (ray->posx - game->posx + (1 - stepx) / 2) / rayx;
 	else
-		ray->dis = (ray->posy - game.posy + (1 - stepy) / 2) / rayy;
+		ray->dis = (ray->posy - game->posy + (1 - stepy) / 2) / rayy;
 	ray->to_draw = abs((int)(HEIGHT / ray->dis));
 	ray->over = (double)ray->to_draw / HEIGHT;
 	ray->start = -ray->to_draw / 2 + HEIGHT / 2;
