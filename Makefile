@@ -6,7 +6,7 @@
 #    By: taeoh <taeoh@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/28 11:02:51 by juhyelee          #+#    #+#              #
-#    Updated: 2024/04/18 17:27:05 by taeoh            ###   ########.fr        #
+#    Updated: 2024/04/18 18:19:26 by taeoh            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,7 +63,16 @@ CFLAG		= -Wall -Wextra -Werror
 LFLAG		= -Llibft -lft -Lmlx -lmlx -framework OpenGL -framework AppKit
 
 NAME		= cub3D
-BONUS		= cub3D_bonus
+BONUS		= _bonus
+ISBNS		= 0
+
+ifeq ($(ISBNS), 1)
+	INCS = $(BNS_INCS)
+	OBJS = $(BNS_OBJS)
+else
+	INCS = $(MAN_INCS)
+	OBJS = $(MAN_OBJS)
+endif
 
 .PHONY		: all bonus clean fclean re
 
@@ -73,6 +82,7 @@ clean		:
 	${RM} ${MAN_OBJS}
 	${RM} ${BNS_OBJS}
 	${MK} ${LIBFTDIR} clean
+	
 fclean		: clean
 	${RM} ${NAME}
 	${RM} ${BONUS}
@@ -80,10 +90,10 @@ fclean		: clean
 	${MK} ${MLXDIR} clean
 re			: fclean all
 
-${NAME}		: ${MAN_OBJS} ${LIBFT} ${MLX}
-	${CC} ${LFLAG} -I${MAN_INCS} $^ -o $@
-${BONUS}	: ${BNS_OBJS} ${LIBFT} ${MLX}
-	${CC} ${LFLAG} -I${BNS_INCS} $^ -o $@
+${NAME}		: ${OBJS} ${LIBFT} ${MLX}
+		${CC} ${LFLAG} -I${INCS} $^ -o $@
+${BONUS}	:
+	make ISBNS=1 all
 ${LIBFT}	:
 	${MK} ${LIBFTDIR}
 $(MLX)		:
