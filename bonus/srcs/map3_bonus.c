@@ -6,11 +6,23 @@
 /*   By: taeoh <taeoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 15:26:00 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/04/17 16:12:27 by taeoh            ###   ########.fr       */
+/*   Updated: 2024/04/18 17:25:53 by taeoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d_bonus.h"
+
+void	check_surround(t_map const map)
+{
+	size_t	px;
+	size_t	py;
+	t_map	cmap;
+
+	copy_map(&cmap, map);
+	while (!check_visited(cmap, &py, &px))
+		check_around(cmap, py, px);
+	clear_map(cmap);
+}
 
 void	copy_map(t_map *const dst, t_map const org)
 {
@@ -64,13 +76,4 @@ int	check_up(t_map const map, size_t const y, size_t const x)
 	else if (map.map[y - 1][x] == ' ')
 		print_error(E_MAP_INVAL);
 	return (map.map[y - 1][x] == 'C' || map.map[y - 1][x] == '0' || is_player(map.map[y - 1][x]));
-}
-
-int	check_left(t_map const map, size_t const y, size_t const x)
-{
-	if (x == 0 || map.map[y][x] == '\0')
-		print_error(E_MAP_INVAL);
-	else if (map.map[y][x - 1] == ' ')
-		print_error(E_MAP_INVAL);
-	return (map.map[y - 1][x] == 'C' || map.map[y][x - 1] == '0' || is_player(map.map[y][x - 1]));
 }

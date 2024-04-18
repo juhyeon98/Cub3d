@@ -6,7 +6,7 @@
 /*   By: taeoh <taeoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 18:21:32 by taeoh             #+#    #+#             */
-/*   Updated: 2024/04/17 16:14:07 by taeoh            ###   ########.fr       */
+/*   Updated: 2024/04/18 17:24:35 by taeoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,30 +32,36 @@ int	draw_player(t_game *const game, int x, int y)
 
 void	draw_minimap(t_game *const game, int x, int y)
 {
-	int	offx;
-	int	offy;
+	int		offx;
+	int		offy;
+	char	*addr;
 
 	while (++y < game->mmap_size)
 	{
 		x = -1;
 		while (++x < game->mmap_size)
 		{
-			offx = (int)(game->posx + (-1) * game->mmap_grid / 2 + \
-			game->mmap_grid / game->mmap_size * x);
-			offy = (int)(game->posy + (-1) * game->mmap_grid / 2 + \
-			game->mmap_grid / game->mmap_size * y);
+			offx = get_offset(*game, game->posx, x);
+			offy = get_offset(*game, game->posy, y);
+			addr = get_addr(game->minimap, y, x);
 			if (draw_player(game, x, y))
-				*(unsigned int *)(game->minimap.addr + y * game->minimap.len + \
-				(game->minimap.bpp / 8) * x) = 0xDD0000;
-			else if ((offx >= 0 && offy >= 0 && offx < (int)game->map.w && \
-			offy < (int)game->map.h) && (game->map.map[offy][offx] == '1'))
-				*(unsigned int *)(game->minimap.addr + y * game->minimap.len + \
-				(game->minimap.bpp / 8) * x) = 0x333333 | game->map_opacity;
+				*(unsigned int *)addr = 0xDD0000;
+			else if (offx >= 0 && offy >= 0 && offx < (int)game->map.w && \
+			offy < (int)game->map.h && game->map.map[offy][offx] == '1')
+				*(unsigned int *)addr = 0x333333 | game->map_opacity;
+			else if (offx >= 0 && offy >= 0 && offx < (int)game->map.w && \
+			offy < (int)game->map.h && game->map.map[offy][offx] == 'D')
+				*(unsigned int *)addr = 0xAAAAAA | game->map_opacity;
 			else
-				*(unsigned int *)(game->minimap.addr + y * game->minimap.len + \
-				(game->minimap.bpp / 8) * x) = 0xFFFFFF | game->map_opacity;
+				*(unsigned int *)addr = 0xFFFFFF | game->map_opacity;
 		}
 	}
+}
+
+int	get_offset(t_game const game, double pos, int n)
+{
+	return ((int)(pos + (-1) * game.mmap_grid / 2 + \
+	game.mmap_grid / game.mmap_size * n));
 }
 
 void	put_minimap(t_game *const game)

@@ -6,7 +6,7 @@
 /*   By: taeoh <taeoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 16:26:56 by taeoh             #+#    #+#             */
-/*   Updated: 2024/04/18 16:58:46 by taeoh            ###   ########.fr       */
+/*   Updated: 2024/04/18 17:29:44 by taeoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,9 +77,6 @@ void	put_sprite(t_game *const game)
 	t_sprite	s;
 
 	flush_image(&game->spr);
-	//sprite 찾기
-	game->spx = 26.5;
-	game->spy = 8.5;
 	init_sprite(game, &s);
 	insert_sprite(game, &s);
 	mlx_put_image_to_window(game->mlx, game->win, game->spr.obj, 0, 0);

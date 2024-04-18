@@ -6,7 +6,7 @@
 #    By: taeoh <taeoh@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/28 11:02:51 by juhyelee          #+#    #+#              #
-#    Updated: 2024/04/18 13:50:48 by taeoh            ###   ########.fr        #
+#    Updated: 2024/04/18 17:27:05 by taeoh            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,13 +44,16 @@ BNS_SRCS	= ${BNS_SDIR}/main_bonus.c \
 			  ${BNS_SDIR}/map1_bonus.c \
 			  ${BNS_SDIR}/map2_bonus.c \
 			  ${BNS_SDIR}/map3_bonus.c \
-			  ${BNS_SDIR}/window_bonus.c \
+			  ${BNS_SDIR}/map4_bonus.c \
+			  ${BNS_SDIR}/window1_bonus.c \
+			  ${BNS_SDIR}/window2_bonus.c \
 			  ${BNS_SDIR}/render1_bonus.c \
 			  ${BNS_SDIR}/render2_bonus.c \
 			  ${BNS_SDIR}/minimap_bonus.c \
 			  ${BNS_SDIR}/sprite1_bonus.c \
 			  ${BNS_SDIR}/event1_bonus.c \
-			  ${BNS_SDIR}/event2_bonus.c
+			  ${BNS_SDIR}/event2_bonus.c \
+			  ${BNS_SDIR}/fist_bonus.c
 BNS_OBJS	= ${BNS_SRCS:.c=.o}
 
 MK			= make -C

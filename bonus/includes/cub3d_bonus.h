@@ -6,7 +6,7 @@
 /*   By: taeoh <taeoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 10:43:32 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/04/18 16:55:10 by taeoh            ###   ########.fr       */
+/*   Updated: 2024/04/18 17:27:34 by taeoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,16 +30,17 @@
 
 # define FL_RSRCS 0x3F
 
-# define ESC_KEY 53
+# define ESC 53
 # define W 13
 # define A 0
 # define S 1
 # define D 2
+# define E 14
+# define SPACE 49
 # define LEFT 123
 # define RIGHT 124
 # define KEY_EXIT 17
 # define KEY_PRESS 2
-# define KEY_
 
 # define FOV 0.87
 # define ANGLE 0.05
@@ -78,6 +79,7 @@ enum e_error
 	E_MAP_EMPL,
 	E_MAP_2BIG,
 	E_MAP_2PLAYER,
+	E_MAP_2COIN,
 	E_MAP_NOPLAYER,
 	E_MLX
 };
@@ -178,6 +180,7 @@ typedef struct s_game
 
 	t_img	screen;
 	t_img	textures[4];
+	t_img	fist[3];
 	t_img	wall;
 	t_img	door;
 
@@ -204,6 +207,7 @@ typedef struct s_game
 	int		move_left;
 	int		turn_left;
 	int		turn_right;
+	int		attack;
 
 	t_ray	ray;
 
@@ -239,9 +243,11 @@ void	organize(char *const str);
 
 void	init_window(void *mlx, void *win, t_img *img, t_rsrc *rsrc);
 void	set_position(t_game *game, char **map);
+void	apply_position(t_game *game, char **map, size_t y, size_t x);
 void	set_png_images(t_game *game, t_img *ts, int i);
 void	set_images(t_game *game, t_img *sc, t_img *ts);
 void	load_window(t_game *game);
+void	load_sprite(t_img *const img, void *const mlx, char *file);
 
 /* parsing */
 void	parse(t_map *const map, t_rsrc *const rsrc, \
@@ -264,6 +270,7 @@ size_t	get_line_len(char const *str);
 void	check_elements(t_map const map);
 int		is_player(char const el);
 int		check_player(char const el);
+int		check_coin(char const el);
 void	check_surround(t_map const map);
 int		check_visited(t_map const map, size_t *y, size_t *x);
 void	copy_map(t_map *const dst, t_map const org);
@@ -276,6 +283,7 @@ int		check_right(t_map const map, size_t const y, size_t const x);
 
 /* rendering */
 int		next_frame(t_game *game);
+void	flush_wall(t_img *const wall);
 void	render(t_game *const game);
 void	set_back(t_img *const img, size_t const h_idx, t_color const col);
 void	init_ray(t_game const game, t_ray *const ray, size_t w_idx);
@@ -292,6 +300,9 @@ void	draw_texture(t_game *const game, t_ray const ray, \
 
 char	*get_addr(t_img const img, size_t const y, size_t const x);
 
+void	draw_fist(t_game *const game, t_img const fist);
+void	animation_fist(t_game *const game);
+
 /* event */
 int		exit_program(void);
 int		key_press(int keycode, t_game *const game);
@@ -306,6 +317,7 @@ void	move_left(t_game *const game);
 
 int		draw_player(t_game *const game, int x, int y);
 void	draw_minimap(t_game *const game, int x, int y);
+int		get_offset(t_game const game, double pos, int n);
 void	put_minimap(t_game *const game);
 void	put_sprite(t_game *const game);
 void	flush_image(t_img *image);

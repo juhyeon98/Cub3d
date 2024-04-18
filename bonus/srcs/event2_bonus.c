@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   event2_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taeoh <taeoh@student.42.fr>                +#+  +:+       +#+        */
+/*   By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 13:01:52 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/04/17 12:03:09 by taeoh            ###   ########.fr       */
+/*   Updated: 2024/04/18 13:41:00 by juhyelee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,4 +94,12 @@ void	move_left(t_game *const game)
 	&& game->map.map[(int)(m.righty - m.collx)][(int)m.rightx] != 'D' \
 	&& game->map.map[(int)(m.diffy - m.collx)][(int)game->posx] != 'D')
 		game->posy = m.diffy;
+}
+
+void	load_sprite(t_img *const img, void *const mlx, char *file)
+{
+	img->obj = mlx_xpm_file_to_image(mlx, file, &img->w, &img->h);
+	if (!img->obj)
+		print_error(E_MLX);
+	img->addr = mlx_get_data_addr(img->obj, &img->bpp, &img->len, &img->endian);
 }
