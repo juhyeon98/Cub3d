@@ -6,11 +6,13 @@
 /*   By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 12:14:08 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/04/17 15:08:29 by juhyelee         ###   ########.fr       */
+/*   Updated: 2024/04/18 16:34:43 by juhyelee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d_bonus.h"
+#include <stdio.h>
+
 
 void	a(){system("leaks cub3D");}
 
@@ -65,8 +67,10 @@ int	key_release(int keycode, t_game *const game)
 		game->move_right = 0;
 	else if (keycode == A)
 		game->move_left = 0;
-	else if (keycode == 14)
+	else if (keycode == E)
 		door_handling(game);
+	else if (keycode == SPACE)
+		game->attack = 1;
 	return (0);
 }
 

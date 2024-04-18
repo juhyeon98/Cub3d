@@ -6,7 +6,7 @@
 /*   By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 10:55:33 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/04/17 16:14:55 by juhyelee         ###   ########.fr       */
+/*   Updated: 2024/04/18 16:34:24 by juhyelee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,10 @@ void	render(t_game *game)
 	mlx_put_image_to_window(game->mlx, game->win, game->screen.obj, 0, 0);
 	mlx_put_image_to_window(game->mlx, game->win, game->wall.obj, 0, 0);
 	put_minimap(game);
+	if (game->attack == 0)
+		draw_fist(game, game->fist[0]);
+	else
+		animation_fist(game);
 	mlx_sync(MLX_SYNC_WIN_CMD_COMPLETED, game->win);
 }
 
