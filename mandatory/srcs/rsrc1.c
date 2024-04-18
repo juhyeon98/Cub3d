@@ -6,7 +6,7 @@
 /*   By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 11:59:12 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/04/16 18:35:26 by juhyelee         ###   ########.fr       */
+/*   Updated: 2024/04/18 12:35:15 by juhyelee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	init_resource(t_rsrc *const rsrc, int const fd)
 	{
 		line = get_line(fd);
 		if (!line)
-			print_error(fd);
+			print_error(E_RSRC_LACK);
 		line[ft_strlen(line) - 1] = '\0';
 		type = get_type(line);
 		if ((to_check >> type) & 1)
@@ -39,21 +39,24 @@ void	init_resource(t_rsrc *const rsrc, int const fd)
 
 t_type	get_type(char const *str)
 {
+	size_t	index;
+
 	if (*str == '\0')
 		return (T_NL);
-	while (*str && !is_white(*str))
-		str++;
-	if (str[-1] == 'F')
+	index = 0;
+	while (str[index] && !is_white(str[index]))
+		index++;
+	if (index == 1 && str[0] == 'F')
 		return (T_FL);
-	else if (str[-1] == 'C')
+	else if (index == 1 && str[0] == 'C')
 		return (T_CL);
-	else if (str[-1] == 'O' && str[-2] == 'N')
+	else if (index == 2 && str[1] == 'O' && str[0] == 'N')
 		return (T_NO);
-	else if (str[-1] == 'O' && str[-2] == 'S')
+	else if (index == 2 && str[1] == 'O' && str[0] == 'S')
 		return (T_SO);
-	else if (str[-1] == 'E' && str[-2] == 'W')
+	else if (index == 2 && str[1] == 'E' && str[0] == 'W')
 		return (T_WE);
-	else if (str[-1] == 'A' && str[-2] == 'E')
+	else if (index == 2 && str[1] == 'A' && str[0] == 'E')
 		return (T_EA);
 	print_error(E_TYPE_INVAL);
 	return (-2);
