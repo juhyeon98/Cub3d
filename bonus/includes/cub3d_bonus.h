@@ -6,7 +6,7 @@
 /*   By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 10:43:32 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/04/18 16:47:44 by juhyelee         ###   ########.fr       */
+/*   Updated: 2024/04/18 17:13:36 by juhyelee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -224,6 +224,7 @@ void	organize(char *const str);
 
 void	init_window(void *mlx, void *win, t_img *img, t_rsrc *rsrc);
 void	set_position(t_game *game, char **map);
+void	apply_position(t_game *game, char **map, size_t y, size_t x);
 void	set_png_images(t_game *game, t_img *ts, int i);
 void	set_images(t_game *game, t_img *sc, t_img *ts);
 void	load_window(t_game *game);
