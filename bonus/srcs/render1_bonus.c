@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render1_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: taeoh <taeoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 10:55:33 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/04/18 16:34:24 by juhyelee         ###   ########.fr       */
+/*   Updated: 2024/04/18 17:24:12 by taeoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ void	render(t_game *game)
 	{
 		init_ray(*game, &game->ray, w_idx);
 		detech_wall(&game->ray, game->map);
-		set_distance(*game, &game->ray);
+		set_distance(game, &game->ray);
+		game->buffer[w_idx] = game->ray.dis;
 		select_texture(&game->ray);
 		set_texture_index(*game, &game->ray);
 		draw_texture(game, game->ray, w_idx);
@@ -47,6 +48,7 @@ void	render(t_game *game)
 	}
 	mlx_put_image_to_window(game->mlx, game->win, game->screen.obj, 0, 0);
 	mlx_put_image_to_window(game->mlx, game->win, game->wall.obj, 0, 0);
+	put_sprite(game);
 	put_minimap(game);
 	if (game->attack == 0)
 		draw_fist(game, game->fist[0]);

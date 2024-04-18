@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   window_bonus.c                                     :+:      :+:    :+:   */
+/*   window1_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: taeoh <taeoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 13:07:29 by taeoh             #+#    #+#             */
-/*   Updated: 2024/04/18 17:14:58 by juhyelee         ###   ########.fr       */
+/*   Updated: 2024/04/18 17:37:51 by taeoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,18 +88,18 @@ void	set_png_images(t_game *game, t_img *ts, int i)
 					&ts[i].len, &ts[i].endian);
 }
 
-void	set_images(t_game *game, t_img *sc, t_img *ts)
+void	flush_image(t_img *image)
 {
-	sc->obj = mlx_new_image(game->mlx, WIDTH, HEIGHT);
-	if (sc->obj == NULL)
-		print_error(E_XPM_FAIL);
-	game->wall.obj = mlx_new_image(game->mlx, WIDTH, HEIGHT);
-	sc->addr = mlx_get_data_addr(sc->obj, &sc->bpp, &sc->len, &sc->endian);
-	game->wall.addr = mlx_get_data_addr(game->wall.obj, &game->wall.bpp, \
-										&game->wall.len, &game->wall.endian);
-	set_png_images(game, ts, 0);
-	set_png_images(game, ts, 1);
-	set_png_images(game, ts, 2);
-	set_png_images(game, ts, 3);
-}
+	int	x;
+	int	y;
 
+	x = -1;
+	y = -1;
+	while (++y < HEIGHT)
+	{
+		while (++x < WIDTH)
+			*(t_color *)(image->addr + y * image->len + (image->bpp / 8) * x) \
+				= 0xFF000000;
+		x = -1;
+	}
+}

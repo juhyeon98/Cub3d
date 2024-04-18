@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map3_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: taeoh <taeoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 15:26:00 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/04/18 16:50:55 by juhyelee         ###   ########.fr       */
+/*   Updated: 2024/04/18 17:38:09 by taeoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,5 +75,6 @@ int	check_up(t_map const map, size_t const y, size_t const x)
 		print_error(E_MAP_INVAL);
 	else if (map.map[y - 1][x] == ' ')
 		print_error(E_MAP_INVAL);
-	return (map.map[y - 1][x] == '0' || is_player(map.map[y - 1][x]));
+	return (map.map[y - 1][x] == 'C' || map.map[y - 1][x] == '0' || \
+			is_player(map.map[y - 1][x]));
 }

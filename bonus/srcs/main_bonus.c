@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: taeoh <taeoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 12:14:08 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/04/18 16:34:43 by juhyelee         ###   ########.fr       */
+/*   Updated: 2024/04/18 17:40:10 by taeoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d_bonus.h"
-#include <stdio.h>
-
 
 void	a(){system("leaks cub3D");}
 
@@ -26,6 +24,7 @@ int	main(int argc, char *argv[])
 	else if (argc > 2)
 		print_error(E_ARG_MANY);
 	parse(&game.map, &game.rsrc, argv[1]);
+	game.time = 0;
 	load_window(&game);
 	render(&game);
 	mlx_mouse_hide();
@@ -80,6 +79,7 @@ int	next_frame(t_game *game)
 	int	y;
 	int	diff;
 
+	game->time++;
 	mlx_mouse_get_pos(game->win, &x, &y);
 	diff = x - WIDTH / 2;
 	mlx_mouse_move(game->win, WIDTH / 2, HEIGHT / 2);
