@@ -6,7 +6,7 @@
 /*   By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 14:33:32 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/04/18 16:45:47 by juhyelee         ###   ########.fr       */
+/*   Updated: 2024/04/18 16:49:57 by juhyelee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ int	check_visited(t_map const map, size_t *y, size_t *x)
 		while (w < map.w)
 		{
 			if (map.map[h][w] == '0' || map.map[h][w] == 'D' || \
-				is_player(map.map[h][w]))
+				map.map[h][w] == 'A' || is_player(map.map[h][w]))
 			{
 				*x = w;
 				*y = h;
@@ -93,16 +93,4 @@ int	check_visited(t_map const map, size_t *y, size_t *x)
 		h++;
 	}
 	return (1);
-}
-
-void	check_surround(t_map const map)
-{
-	size_t	px;
-	size_t	py;
-	t_map	cmap;
-
-	copy_map(&cmap, map);
-	while (!check_visited(cmap, &py, &px))
-		check_around(cmap, py, px);
-	clear_map(cmap);
 }
