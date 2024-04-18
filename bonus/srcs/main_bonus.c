@@ -6,13 +6,11 @@
 /*   By: taeoh <taeoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 12:14:08 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/04/18 17:26:37 by taeoh            ###   ########.fr       */
+/*   Updated: 2024/04/18 17:40:10 by taeoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d_bonus.h"
-#include <stdio.h>
-
 
 void	a(){system("leaks cub3D");}
 

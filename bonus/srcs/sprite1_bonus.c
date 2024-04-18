@@ -6,7 +6,7 @@
 /*   By: taeoh <taeoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 16:26:56 by taeoh             #+#    #+#             */
-/*   Updated: 2024/04/18 17:29:44 by taeoh            ###   ########.fr       */
+/*   Updated: 2024/04/18 17:39:35 by taeoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,17 +52,18 @@ void	insert_sprite(t_game *const game, t_sprite *const s)
 	int		j;
 	char	*image;
 	char	*tex;
+	int		d;
 
 	i = s->xstart - 1;
 	while (++i < s->xend)
 	{
-		s->texx = (int)(i - (-s->width / 2 + s->screen)) * 32 / s->width;
+		s->texx = i - (-s->width / 2 + s->screen) * 32 / s->width;
 		if (s->camy >= 0 && i >= 0 && i <= WIDTH && s->camy < game->buffer[i])
 		{
 			j = s->ystart - 1;
 			while (++j < s->yend)
 			{
-				int d = j * 256 - HEIGHT * 128 + s->width * 128;
+				d = j * 256 - HEIGHT * 128 + s->width * 128;
 				s->texy = ((d * 32) / s->width) / 256;
 				image = get_addr(game->spr, j, i);
 				tex = get_addr(game->coin[get_spr_i(game)], s->texy, s->texx);

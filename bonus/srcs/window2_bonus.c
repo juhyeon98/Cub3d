@@ -1,16 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   window1_bonus.c                                    :+:      :+:    :+:   */
+/*   window2_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: taeoh <taeoh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 17:15:15 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/04/18 17:15:26 by juhyelee         ###   ########.fr       */
+/*   Updated: 2024/04/18 17:37:37 by taeoh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d_bonus.h"
+
+void	sprite_images(t_game *game)
+{
+	game->spr.obj = mlx_new_image(game->mlx, WIDTH, HEIGHT);
+	if (game->spr.obj == NULL)
+		print_error(E_XPM_FAIL);
+	game->spr.addr = mlx_get_data_addr(game->spr.obj, &game->spr.bpp, \
+									&game->spr.len, &game->spr.endian);
+	flush_image(&game->spr);
+	load_sprite(&game->coin[0], game->mlx, "texture/a.xpm");
+	load_sprite(&game->coin[1], game->mlx, "texture/b.xpm");
+	load_sprite(&game->coin[2], game->mlx, "texture/c.xpm");
+	load_sprite(&game->coin[3], game->mlx, "texture/d.xpm");
+	load_sprite(&game->coin[4], game->mlx, "texture/e.xpm");
+}
+
+void	set_images(t_game *game, t_img *sc, t_img *ts)
+{
+	sc->obj = mlx_new_image(game->mlx, WIDTH, HEIGHT);
+	if (sc->obj == NULL)
+		print_error(E_XPM_FAIL);
+	game->wall.obj = mlx_new_image(game->mlx, WIDTH, HEIGHT);
+	sc->addr = mlx_get_data_addr(sc->obj, &sc->bpp, &sc->len, &sc->endian);
+	game->wall.addr = mlx_get_data_addr(game->wall.obj, &game->wall.bpp, \
+										&game->wall.len, &game->wall.endian);
+	set_png_images(game, ts, 0);
+	set_png_images(game, ts, 1);
+	set_png_images(game, ts, 2);
+	set_png_images(game, ts, 3);
+	sprite_images(game);
+}
 
 void	load_window(t_game *game)
 {
