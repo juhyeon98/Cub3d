@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taeoh <taeoh@student.42.fr>                +#+  +:+       +#+        */
+/*   By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 11:17:13 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/04/17 12:04:41 by taeoh            ###   ########.fr       */
+/*   Updated: 2024/04/18 16:46:41 by juhyelee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ void	map_error(enum e_error num)
 		ft_putendl_fd("Map is too big", STDERR_FILENO);
 	else if (num == E_MAP_2PLAYER)
 		ft_putendl_fd("Too many player in map", STDERR_FILENO);
+	else if (num == E_MAP_2COIN)
+		ft_putendl_fd("Too many coin in map", STDERR_FILENO);
 	else if (num == E_MAP_NOPLAYER)
 		ft_putendl_fd("Not contain player in map", STDERR_FILENO);
 	else if (num == E_MLX)
