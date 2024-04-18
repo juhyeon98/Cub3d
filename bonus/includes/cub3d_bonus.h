@@ -6,7 +6,7 @@
 /*   By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 10:43:32 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/04/17 16:22:05 by juhyelee         ###   ########.fr       */
+/*   Updated: 2024/04/18 12:09:15 by juhyelee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -285,6 +285,7 @@ void	move_left(t_game *const game);
 
 int		draw_player(t_game *const game, int x, int y);
 void	draw_minimap(t_game *const game, int x, int y);
+int		get_offset(t_game const game, double pos, int n);
 void	put_minimap(t_game *const game);
 
 #endif
