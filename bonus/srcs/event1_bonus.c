@@ -6,7 +6,7 @@
 /*   By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 12:48:12 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/04/17 16:14:04 by juhyelee         ###   ########.fr       */
+/*   Updated: 2024/04/18 14:06:55 by juhyelee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	exit_program(void)
 
 int	key_press(int keycode, t_game *const game)
 {
-	if (keycode == ESC_KEY)
+	if (keycode == ESC)
 		exit(1);
 	if (keycode == RIGHT)
 		game->turn_right = 1;

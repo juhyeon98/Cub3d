@@ -6,7 +6,7 @@
 /*   By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 10:43:32 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/04/18 12:09:15 by juhyelee         ###   ########.fr       */
+/*   Updated: 2024/04/18 16:20:31 by juhyelee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,16 +30,17 @@
 
 # define FL_RSRCS 0x3F
 
-# define ESC_KEY 53
+# define ESC 53
 # define W 13
 # define A 0
 # define S 1
 # define D 2
+# define E 14
+# define SPACE 49
 # define LEFT 123
 # define RIGHT 124
 # define KEY_EXIT 17
 # define KEY_PRESS 2
-# define KEY_
 
 # define FOV 0.87
 # define ANGLE 0.05
@@ -161,6 +162,7 @@ typedef struct s_game
 
 	t_img	screen;
 	t_img	textures[4];
+	t_img	fist[3];
 	t_img	wall;
 	t_img	door;
 
@@ -187,9 +189,10 @@ typedef struct s_game
 	int		move_left;
 	int		turn_left;
 	int		turn_right;
+	int		attack;
 
 	int		time;
-	int		f_time;
+	size_t	f_time;
 	t_ray	ray;
 }t_game;
 
@@ -220,6 +223,7 @@ void	set_position(t_game *game, char **map);
 void	set_png_images(t_game *game, t_img *ts, int i);
 void	set_images(t_game *game, t_img *sc, t_img *ts);
 void	load_window(t_game *game);
+void	load_sprite(t_img *const img, void *const mlx, char *file);
 
 /* parsing */
 void	parse(t_map *const map, t_rsrc *const rsrc, \
@@ -270,6 +274,9 @@ void	draw_texture(t_game *const game, t_ray const ray, \
 					size_t const w_idx);
 
 char	*get_addr(t_img const img, size_t const y, size_t const x);
+
+void	draw_fist(t_game *const game, t_img const fist);
+void	animation_fist(t_game *const game);
 
 /* event */
 int		exit_program(void);

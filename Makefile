@@ -6,7 +6,7 @@
 #    By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/28 11:02:51 by juhyelee          #+#    #+#              #
-#    Updated: 2024/04/18 12:56:12 by juhyelee         ###   ########.fr        #
+#    Updated: 2024/04/18 13:29:41 by juhyelee         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,7 +49,8 @@ BNS_SRCS	= ${BNS_SDIR}/main_bonus.c \
 			  ${BNS_SDIR}/render2_bonus.c \
 			  ${BNS_SDIR}/minimap_bonus.c \
 			  ${BNS_SDIR}/event1_bonus.c \
-			  ${BNS_SDIR}/event2_bonus.c
+			  ${BNS_SDIR}/event2_bonus.c \
+			  ${BNS_SDIR}/fist_bonus.c
 BNS_OBJS	= ${BNS_SRCS:.c=.o}
 
 MK			= make -C
