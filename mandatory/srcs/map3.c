@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map3.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taeoh <taeoh@student.42.fr>                +#+  +:+       +#+        */
+/*   By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 15:26:00 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/04/15 12:47:59 by taeoh            ###   ########.fr       */
+/*   Updated: 2024/04/19 12:32:29 by juhyelee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int	check_up(t_map const map, size_t const y, size_t const x)
 
 int	check_left(t_map const map, size_t const y, size_t const x)
 {
-	if (x == 0 || map.map[y][x] == '\0')
+	if (x == 0 || map.map[y][x + 1] == '\0')
 		print_error(E_MAP_INVAL);
 	else if (map.map[y][x - 1] == ' ')
 		print_error(E_MAP_INVAL);

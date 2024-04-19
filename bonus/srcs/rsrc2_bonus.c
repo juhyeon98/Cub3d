@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rsrc2_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taeoh <taeoh@student.42.fr>                +#+  +:+       +#+        */
+/*   By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 17:04:10 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/04/18 17:38:24 by taeoh            ###   ########.fr       */
+/*   Updated: 2024/04/19 12:36:09 by juhyelee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	check_down(t_map const map, size_t const y, size_t const x)
 
 int	check_right(t_map const map, size_t const y, size_t const x)
 {
-	if (x == 0 || map.map[y][x] == '\0')
+	if (x == 0 || map.map[y][x + 1] == '\0')
 		print_error(E_MAP_INVAL);
 	else if (map.map[y][x + 1] == ' ')
 		print_error(E_MAP_INVAL);
