@@ -3,22 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taeoh <taeoh@student.42.fr>                +#+  +:+       +#+        */
+/*   By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 12:14:08 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/04/18 17:40:10 by taeoh            ###   ########.fr       */
+/*   Updated: 2024/04/19 10:26:50 by juhyelee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d_bonus.h"
 
-void	a(){system("leaks cub3D");}
-
 int	main(int argc, char *argv[])
 {
 	t_game	game;
 
-	atexit(a);
 	if (argc < 2)
 		print_error(E_ARG_LACK);
 	else if (argc > 2)

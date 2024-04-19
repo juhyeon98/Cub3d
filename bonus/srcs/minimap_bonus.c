@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: taeoh <taeoh@student.42.fr>                +#+  +:+       +#+        */
+/*   By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 18:21:32 by taeoh             #+#    #+#             */
-/*   Updated: 2024/04/18 17:24:35 by taeoh            ###   ########.fr       */
+/*   Updated: 2024/04/19 10:24:24 by juhyelee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,8 @@ void	draw_minimap(t_game *const game, int x, int y)
 			offy < (int)game->map.h && game->map.map[offy][offx] == '1')
 				*(unsigned int *)addr = 0x333333 | game->map_opacity;
 			else if (offx >= 0 && offy >= 0 && offx < (int)game->map.w && \
-			offy < (int)game->map.h && game->map.map[offy][offx] == 'D')
+			offy < (int)game->map.h && (game->map.map[offy][offx] == 'D' || \
+			game->map.map[offy][offx] == 'O'))
 				*(unsigned int *)addr = 0xAAAAAA | game->map_opacity;
 			else
 				*(unsigned int *)addr = 0xFFFFFF | game->map_opacity;

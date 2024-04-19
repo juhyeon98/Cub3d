@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: taeoh <taeoh@student.42.fr>                +#+  +:+       +#+         #
+#    By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/28 11:02:51 by juhyelee          #+#    #+#              #
-#    Updated: 2024/04/18 18:19:26 by taeoh            ###   ########.fr        #
+#    Updated: 2024/04/19 10:28:10 by juhyelee         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -85,7 +85,6 @@ clean		:
 	
 fclean		: clean
 	${RM} ${NAME}
-	${RM} ${BONUS}
 	${MK} ${LIBFTDIR} fclean
 	${MK} ${MLXDIR} clean
 re			: fclean all

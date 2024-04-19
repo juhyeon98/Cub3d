@@ -6,7 +6,7 @@
 /*   By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 13:26:42 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/04/19 07:10:27 by juhyelee         ###   ########.fr       */
+/*   Updated: 2024/04/19 10:25:28 by juhyelee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@ void	animation_fist(t_game *const game)
 {
 	static size_t	frame;
 
-	if (frame < 3)
+	if (frame < 2)
 		draw_fist(game, game->fist[1]);
-	else if (frame < 6)
+	else if (frame < 4)
 		draw_fist(game, game->fist[2]);
-	else if (frame < 9)
+	else if (frame < 6)
 		draw_fist(game, game->fist[1]);
 	else
 	{
