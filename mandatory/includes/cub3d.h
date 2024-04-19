@@ -6,7 +6,7 @@
 /*   By: juhyelee <juhyelee@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 10:43:32 by juhyelee          #+#    #+#             */
-/*   Updated: 2024/04/17 12:58:40 by juhyelee         ###   ########.fr       */
+/*   Updated: 2024/04/19 09:57:16 by juhyelee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -170,8 +170,6 @@ typedef struct s_game
 	double	planx;
 	double	plany;
 
-	int		time;
-	int		f_time;
 	t_ray	ray;
 }t_game;
 
