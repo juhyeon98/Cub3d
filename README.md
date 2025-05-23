@@ -22,6 +22,8 @@
 # 프로그램 구조
 <img width="3043" alt="Untitled" src="https://github.com/user-attachments/assets/b70f7981-a507-4eb0-bd46-cbdc6eac2884" />
 
+기능 명세서 [링크](https://docs.google.com/spreadsheets/d/1zbRwd6gnVwAyFKsiN_fW3u1D4u0lJJvJl_f5ZlufPTs/edit?gid=0#gid=0)
+
 # 실행 방법
 본 프로그램은 Unix(macOS)에서만 실행 가능합니다.
 ```bash
