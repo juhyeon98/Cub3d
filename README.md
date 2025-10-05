@@ -86,4 +86,4 @@ cd Cub3d
 
 ## 📘 참고 자료
 
-- Ray Casting 원리: Lode's Computer Graphics Tutorial
+- Ray Casting 원리: [Lode's Computer Graphics Tutorial](https://lodev.org/cgtutor/raycasting.html)
